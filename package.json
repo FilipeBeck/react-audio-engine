@@ -1,0 +1,16 @@
+{
+	"name": "react-audio-engine",
+	"version": "0.0.1",
+	"description": "Engine to assemble Web Audio graphs using React",
+	"main": "index.js",
+	"author": "Filipe Roberto Beck",
+	"license": "MIT",
+	"private": false,
+	"peerDependencies": {
+		"tslib": "^2.0.0"
+	},
+	"devDependencies": {
+		"tslib": "^2.0.0",
+		"typescript": "^3.9.7"
+	}
+}
