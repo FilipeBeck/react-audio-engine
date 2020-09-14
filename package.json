@@ -7,10 +7,16 @@
 	"license": "MIT",
 	"private": false,
 	"peerDependencies": {
+		"react": "^17.0.2",
 		"tslib": "^2.0.0"
 	},
+	"dependencies": {
+    "react-reconciler": "^0.25.1"
+  },
 	"devDependencies": {
 		"@types/node": "^16.7.6",
+		"@types/react-reconciler": "^0.18.0",
+    "react": "^17.0.2",
 		"tslib": "^2.0.0",
 		"typescript": "^3.9.7"
 	}
