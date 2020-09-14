@@ -1,8 +1,13 @@
 devDependencies:
+  '@types/node': 16.7.6
   tslib: 2.3.1
   typescript: 3.9.10
 lockfileVersion: 5.2
 packages:
+  /@types/node/16.7.6:
+    dev: true
+    resolution:
+      integrity: sha512-VESVNFoa/ahYA62xnLBjo5ur6gPsgEE5cNRy8SrdnkZ2nwJSW0kJ4ufbFr2zuU9ALtHM8juY53VcRoTA7htXSg==
   /tslib/2.3.1:
     dev: true
     resolution:
@@ -15,5 +20,6 @@ packages:
     resolution:
       integrity: sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
 specifiers:
+  '@types/node': ^16.7.6
   tslib: ^2.0.0
   typescript: ^3.9.7
