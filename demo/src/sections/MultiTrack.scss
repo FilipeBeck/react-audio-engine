@@ -1,0 +1,63 @@
+.MultiTrack {
+	border: solid 2px var(--dark);
+	background-color: var(--light);
+	& > .master-controls {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		& > .start {
+			margin: 20px;
+			font-weight: bold;
+		}
+		& > .master-gain {
+
+		}
+	}
+	& > .wrapper {
+		& > .tracks {
+			& > ul {
+				margin: 0;
+				padding: 0;
+				& > li {
+					display: flex;
+					justify-content: space-around;
+					align-items: center;
+					list-style: none;
+					padding: 20px;
+					border: {
+						top: solid 2px var(--dark);
+					};
+					&:last-child {
+						border-bottom: solid 2px var(--dark);
+					}
+					& > a.track {
+						color: var(--dark);
+						flex-basis: 200px;
+					}
+					& > input.gain {
+						margin-left: 50px;
+					}
+					& > button.play {
+						margin-left: 50px;
+						padding: 10px;
+						& > span {
+							display: block;
+							width: 75px;
+						}
+					}
+				}
+			}
+			& > .Wave {
+				width: 100%;
+				height: 100%;
+			}
+			& > .sourced {
+				padding: 10px;
+			}
+		}
+	}
+
+	button[disabled] {
+		opacity: 0.5;
+	}
+}

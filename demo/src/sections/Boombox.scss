@@ -1,0 +1,113 @@
+.Boombox {
+	$border-width: 2px;
+	$border-style: solid $border-width var(--dark);
+	& > .handle {
+		height: 50px;
+		border: $border-style;
+		border-bottom: none;
+		background-color: var(--light);
+	}
+	& > .body {
+		border: $border-style;
+		padding: 50px;
+		background-color: var(--light);
+		& > .filter {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
+			border: $border-style;
+			& > .title {
+				margin-bottom: 20px;
+				& > span {
+					font-size: 20px;
+					font-weight: bold;
+				}
+				& > input {
+					margin-left: 10px;
+				}
+			}
+			& > .body {
+				display: grid;
+				grid-template-columns: repeat(5, 1fr);
+				grid-gap: 20px;
+				justify-content: center;
+				align-items: center;
+				& > label {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					&.type {
+						& > select {
+							margin-top: 10px;
+						}
+					}
+				}
+			}
+		}
+		& > .master-controls {
+			display: grid;
+			grid-template-rows: repeat(2, auto);
+			grid-template-columns: repeat(2, 1fr) 12%;
+			grid-template-areas:
+					"volin panin power"
+					"vollab panlab power";
+					grid-column-gap: 20px;
+			justify-items: center;
+			align-items: center;
+			padding: 2vmax;
+			& > input {
+				width: 200px;
+				&.control-volume {
+					grid-area: volin;
+					&::before {
+						content: 'min';
+						display: block;
+						margin-top: -15px;
+					}
+					&::after {
+						content: 'max';
+						display: block;
+						margin-top: -15px;
+					}
+				}
+				&.control-panner {
+					grid-area: panin;
+					&::before {
+						content: 'left';
+						display: block;
+						margin-top: -15px;
+					}
+					&::after {
+						content: 'right';
+						display: block;
+						margin-top: -15px;
+					}
+				}
+			}
+			& > label {
+				&[for="volume"] {
+					grid-area: vollab;
+				}
+				&[for="panner"] {
+					grid-area: panlab;
+				}
+			}
+			& > .control-power {
+				grid-area: power;
+				padding: 10px;
+				font-weight: bold;
+				color: var(--light);
+			}
+		}
+		& > .tape {
+			display: flex;
+			justify-content: center;
+			& > .tape-controls-play {
+				padding: 15px;
+			}
+		}
+	}
+}

@@ -1,0 +1,53 @@
+.AudioAnalyzer {
+	& > canvas {
+		background-color: var(--dark);
+	}
+
+	& .controls {
+		width: 512px;
+		& > div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
+			&.file-select {
+				justify-content: space-around;
+				border: {
+					top: solid 1px var(--border);
+					bottom: solid 1px var(--border);
+				}
+				& > button {
+					font-weight: normal;
+				}
+				& > span {
+					font-size: 20px;
+					font-style: italic;
+				}
+			}
+			& > button {
+				padding: 10px;
+				font-weight: bold;
+				&:last-child {
+					margin-left: 10px;
+				}
+			}
+		}
+		& > form {
+			display: flex;
+			padding: 20px;
+			& > label {
+				& > span {
+					font-size: 14px;
+					color: var(--dark);
+				}
+				& > input {
+					width: -webkit-fill-available;
+					margin: {
+						top: 5px;
+						right: 10px;
+					}
+				}
+			}
+		}
+	}
+}
