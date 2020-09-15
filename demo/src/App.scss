@@ -1,0 +1,76 @@
+:root {
+	font-family: sans-serif;
+	--dark: #003;
+	--light: #fafffa;
+	--border: #eee;
+	--purple: hsla(283, 92%, 44%, 1);
+	color: var(--dark);
+}
+
+body {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	& > div {
+		height: 100%;
+	}
+}
+
+button, input {
+	color: var(--dark);
+	border: solid 1px var(--dark);
+	border-radius: 3px;
+	padding: 5px;
+}
+
+.App {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	& > header {
+		box-sizing: border-box;
+		width: 100%;
+		padding: 30px;
+		background-color: var(--dark);
+		color: var(--light);
+		font-size: 22px;
+		font-weight: bold;
+		text-align: center;
+	}
+	& > .github-fork-ribbon {
+		&.right-top {
+			&:before {
+				background-color: black;
+			}
+		}
+	}
+	& > main {
+		display: grid;
+		grid-template-columns: max-content auto;
+		justify-items: center;
+		height: 100%;
+		& > nav {
+			padding: 10px;
+			border-right: solid 1px var(--border);
+			& > ul {
+				list-style: lower-greek;
+				padding: {
+					left: 30px;
+					right: 10px;
+				};
+				& > li {
+					& > a {
+						color: var(--dark);
+						text-decoration: none;
+					}
+				}
+			}
+		}
+		& > section {
+			padding: 50px;
+		}
+	}
+}

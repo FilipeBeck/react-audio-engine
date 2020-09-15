@@ -1,0 +1,8 @@
+.Wave {
+	& > canvas {
+		width: 100%;
+		height: 100px;
+		background-color: white;
+		border-bottom: solid 2px var(--dark);
+	}
+}

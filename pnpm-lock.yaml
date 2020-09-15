@@ -14,6 +14,7 @@ devDependencies:
   css-loader: registry.npmjs.org/css-loader/4.2.1_webpack@4.44.1
   expect-puppeteer: registry.npmjs.org/expect-puppeteer/4.4.0
   file-loader: registry.npmjs.org/file-loader/6.0.0_webpack@4.44.1
+  github-fork-ribbon-css: registry.npmjs.org/github-fork-ribbon-css/0.2.3
   html-webpack-plugin: registry.npmjs.org/html-webpack-plugin/4.3.0_webpack@4.44.1
   jest: registry.npmjs.org/jest/26.1.0
   jest-environment-puppeteer: registry.npmjs.org/jest-environment-puppeteer/4.4.0
@@ -5125,6 +5126,14 @@ packages:
       registry: 'https://registry.npmjs.com/'
       tarball: 'https://registry.npmjs.org/getpass/-/getpass-0.1.7.tgz'
     version: 0.1.7
+  registry.npmjs.org/github-fork-ribbon-css/0.2.3:
+    dev: true
+    name: github-fork-ribbon-css
+    resolution:
+      integrity: sha512-cmGBV4sivRwmnteSOkqMjN2cnP5/J1SU5aDCVYsBWHmDokZ/JjwGEkduCxY9IULHdCPpw1WSk5Cy8N1LF6jOEw==
+      registry: 'https://registry.npmjs.com/'
+      tarball: 'https://registry.npmjs.org/github-fork-ribbon-css/-/github-fork-ribbon-css-0.2.3.tgz'
+    version: 0.2.3
   registry.npmjs.org/glob-parent/3.1.0:
     dependencies:
       is-glob: registry.npmjs.org/is-glob/3.1.0
@@ -13051,6 +13060,7 @@ specifiers:
   css-loader: ^4.2.1
   expect-puppeteer: ^4.4.0
   file-loader: ^6.0.0
+  github-fork-ribbon-css: ^0.2.3
   html-webpack-plugin: ^4.3.0
   jest: ^26.1.0
   jest-environment-puppeteer: ^4.4.0
