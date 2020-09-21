@@ -7,6 +7,7 @@ import { BufferSource, Scene } from '../../../src/reconciler/Components'
 import { RouteComponentProps } from '@reach/router'
 import AudioView from '../AudioView'
 import { Waveloscope } from './components/audio/Waveloscope'
+import { Button, TextField, Typography } from '@material-ui/core'
 
 require('./AudioAnalyzer.scss')
 
@@ -49,12 +50,29 @@ class AudioAnalyser extends AudioView<AudioAnalyser.Props, AudioAnalyser.State> 
 
 			<nav className="controls">
 				<div>
-					<button className="start-button" onClick={this.xBind('play')}>Start</button>
-					<button type="button" className="stop-button" onClick={this.xBind('stop')}>Stop</button>
+					<Button
+						className="start-button"
+						variant="outlined"
+						onClick={this.xBind('play')}
+					>
+						<Typography>Start</Typography>
+					</Button>
+					<Button
+						className="stop-button"
+						variant="outlined"
+						onClick={this.xBind('stop')}
+					>
+						<Typography>Stop</Typography>
+					</Button>
 				</div>
 				<div className="file-select">
-					<button onClick={this.xBind('selectFile')}>Select audio file</button>
-					<span>{this.state.audioURL || audioURL}</span>
+					<Button
+						variant="outlined"
+						onClick={this.xBind('selectFile')}
+					>
+						<Typography>Select audio file</Typography>
+					</Button>
+					<Typography>{this.state.audioURL || audioURL.split('/').pop()!}</Typography>
 				</div>
 				<form action="" onSubmit={event => {
 					event.preventDefault()
@@ -70,27 +88,23 @@ class AudioAnalyser extends AudioView<AudioAnalyser.Props, AudioAnalyser.State> 
 
 					this.setState({ scene })
 				}}>
-					<label>
-						<span>Latency Hint</span>
-						<input
-							type="number"
-							name="latencyHint"
-							defaultValue="0.01"
-							// value={this.state.scene.latencyHint}
-							// onChange={event => this.setState({ scene: { ...this.state.scene, latencyHint: event.target.value as any } })}
-						/>
-					</label>
-					<label>
-						<span>Sample Rate</span>
-						<input
-							type="number"
-							name="sampleRate"
-							defaultValue="44100"
-							// value={this.state.scene.sampleRate}
-							// onChange={event => this.setState({ scene: { ...this.state.scene, sampleRate: event.target.value as any } })}
-						/>
-					</label>
-					<button type="submit">Apply</button>
+					<TextField
+						type="number"
+						variant="outlined"
+						label="Latency Hint"
+						name="latencyHint"
+						defaultValue="0.01"
+					/>
+					<TextField
+						type="number"
+						variant="outlined"
+						label="Sample Rate"
+						name="sampleRate"
+						defaultValue="44100"
+					/>
+					<Button type="submit" variant="outlined">
+						<Typography>Apply</Typography>
+					</Button>
 				</form>
 				<p className="msg">{this.state.isLoading && 'Loading audio...'}</p>
 			</nav>

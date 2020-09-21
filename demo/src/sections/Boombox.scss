@@ -1,6 +1,8 @@
 .Boombox {
 	$border-width: 2px;
 	$border-style: solid $border-width var(--dark);
+	width: 800px;
+	max-width: 100%;
 	& > .handle {
 		height: 50px;
 		border: $border-style;
@@ -19,6 +21,8 @@
 			padding: 20px;
 			border: $border-style;
 			& > .title {
+				display: flex;
+				align-items: center;
 				margin-bottom: 20px;
 				& > span {
 					font-size: 20px;
@@ -34,6 +38,15 @@
 				grid-gap: 20px;
 				justify-content: center;
 				align-items: center;
+				@media screen and (max-width: 800px) {
+					grid-template-columns: repeat(2, 1fr);
+					& > .MuiTextField {
+						&-root {
+							grid-column-start: 1;
+    					grid-column-end: 3;
+						}
+					}
+				}
 				& > label {
 					display: flex;
 					flex-direction: column;
@@ -48,52 +61,16 @@
 			}
 		}
 		& > .master-controls {
-			display: grid;
-			grid-template-rows: repeat(2, auto);
-			grid-template-columns: repeat(2, 1fr) 12%;
-			grid-template-areas:
-					"volin panin power"
-					"vollab panlab power";
-					grid-column-gap: 20px;
-			justify-items: center;
+			display: flex;
+			justify-content: space-between;
 			align-items: center;
-			padding: 2vmax;
-			& > input {
-				width: 200px;
-				&.control-volume {
-					grid-area: volin;
-					&::before {
-						content: 'min';
-						display: block;
-						margin-top: -15px;
-					}
-					&::after {
-						content: 'max';
-						display: block;
-						margin-top: -15px;
-					}
-				}
-				&.control-panner {
-					grid-area: panin;
-					&::before {
-						content: 'left';
-						display: block;
-						margin-top: -15px;
-					}
-					&::after {
-						content: 'right';
-						display: block;
-						margin-top: -15px;
-					}
-				}
+			margin: 20px 0;
+			@media screen and (max-width: 640px) {
+				flex-wrap: wrap;				
 			}
-			& > label {
-				&[for="volume"] {
-					grid-area: vollab;
-				}
-				&[for="panner"] {
-					grid-area: panlab;
-				}
+			& > * {
+				flex-basis: 100%;
+				margin-right: 10px;
 			}
 			& > .control-power {
 				grid-area: power;

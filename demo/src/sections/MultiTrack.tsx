@@ -2,10 +2,11 @@ import 'vanilla-x/Object'
 import React from 'react'
 import Event from '../../../src/toolkit/Event'
 import { BufferSource, Gain, Mixer, Scene, Track, Record } from '../../../src/reconciler/Components'
-import { RouteComponentProps } from '@reach/router'
+import { Link, RouteComponentProps } from '@reach/router'
 import AudioView from '../AudioView'
-// import ReactDOM from 'react-dom'
 import Wave from './components/view/Wave'
+import { Button, Slider, Typography } from '@material-ui/core'
+import * as Icon from '@material-ui/icons'
 
 require('./MultiTrack.scss')
 
@@ -130,20 +131,20 @@ class MultiTrack extends AudioView<MultiTrack.Props, MultiTrack.State> {
 	public renderView() {
 		return <div className="MultiTrack">
 			<div className="master-controls">
-				<button
+				<Button
 					className="start"
+					variant="outlined"
 					onClick={this.xBind('start')}
 					disabled={this.state.isActive}
 				>
-					{!this.state.isActive && 'Press to resume context' || 'Context resumed'}
-				</button>
-				<input
-					type="range"
+					{!this.state.isActive && 'Resume context' || 'Context resumed'}
+				</Button>
+				<Slider
 					className="gain"
-					min="0"
-					max="3"
+					min={0}
+					max={3}
 					value={this.state.masterGain}
-					step="0.01"
+					step={0.01}
 					onChange={this.xBind('changeMasterGain')}
 				/>
 			</div>
@@ -151,25 +152,26 @@ class MultiTrack extends AudioView<MultiTrack.Props, MultiTrack.State> {
 				<section className="tracks">
 					<ul>
 						{this.state.tracks.map((track, i) => <li key={audioFiles[i]}>
-							<a href={audioFiles[i]} className="track">{track.name}</a>
-							<input
-								type="range"
+							<Link to={audioFiles[i]} className="track" target="new">
+								<Typography>{track.name}</Typography>
+							</Link>
+							<Slider
 								className="gain"
-								min="0"
-								max="3"
+								min={0}
+								max={3}
 								value={track.gain}
-								step="0.01"
-								data-audio-index={i}
-								onChange={this.xBind('changeGain')}
+								step={0.01}
+								onChange={(_event, value) => this.changeGain(value as number, i)}
 							/>
-							<button
+							<Button
 								className="play"
+								variant="outlined"
 								data-audio-index={i}
 								onClick={this.xBind('processTrack')}
 								disabled={!this.state.isActive}
 							>
-								<span id="guitar-play-label">{track.loadingForScene ? 'Loading...' : track.buffer && this.state.isActive && 'Stop' || 'Play'}</span>
-							</button>
+								{track.loadingForScene ? <Icon.LoopRounded/> : track.buffer && this.state.isActive && 'Stop' || 'Play'}
+							</Button>
 						</li>)}
 					</ul>
 					{this.state.recordBuffer && (
@@ -190,16 +192,13 @@ class MultiTrack extends AudioView<MultiTrack.Props, MultiTrack.State> {
 		this.setState({ isActive: true })
 	}
 
-	public changeMasterGain(event: Event<HTMLInputElement>): void {
-		this.setState({ masterGain: parseFloat(event.currentTarget!.value as string)})
+	public changeMasterGain(_event: Event<HTMLInputElement>, value: number): void {
+		this.setState({ masterGain: value })
 	}
 
-	public changeGain(event: Event<HTMLInputElement>): void {
-		const target = event.currentTarget!
-		const audioIndex = parseInt(target.getAttribute('data-audio-index') as string)
+	public changeGain(value: number, index: number): void {
 		const tracks = this.state.tracks.slice()
-
-		tracks[audioIndex].gain = parseFloat(target.value)
+		tracks[index].gain = value
 
 		this.setState({ tracks })
 	}

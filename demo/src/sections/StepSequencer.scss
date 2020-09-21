@@ -5,6 +5,7 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
+		flex-wrap: wrap;
 		padding: 20px;
 		border-bottom: solid 2px var(--dark);
 		& > .title {
@@ -15,11 +16,10 @@
 			}
 		}
 		& > .controls {
-			display: grid;
-			grid-template-columns: auto auto auto;
+			display: flex;
 			justify-content: center;
 			align-items: center;
-			column-gap: 20px;
+			flex-wrap: wrap;
 			margin-left: 30px;
 			& > .bpm {
 				display: flex;
@@ -53,8 +53,10 @@
 		flex-direction: column;
 		justify-content: space-evenly;
 		align-items: stretch;
-		max-width: 75vw;
 		padding: 20px;
+		@media screen and (max-width: 640px) {
+			padding: 10px;
+		}
 		overflow-x: auto;
 	}
 }
@@ -66,6 +68,13 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 10px;
+	@media screen and (max-width: 1024px) {
+		grid-template-columns: repeat(2, auto);
+		& > .pad {
+			grid-column-start: 1;
+			grid-column-end: 3;
+		}
+	}
 	& > .title {
 		& > span {
 			font-size: 24px;
@@ -82,9 +91,9 @@
 		}
 	}
 	& > .pad {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		column-gap: 10px;
+		display: flex;
+		grid-gap: 10px;
+		flex-wrap: wrap;
 		& > div {
 			display: grid;
 			grid-template-rows: repeat(2, 1fr);

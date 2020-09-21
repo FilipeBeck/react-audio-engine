@@ -5,6 +5,7 @@ import { Mixer, Scene } from '../../../src/reconciler/Components'
 import { RouteComponentProps } from '@reach/router'
 import AudioView from '../AudioView'
 import { SweepPad } from './components/audio/SweepPad'
+import { Typography } from '@material-ui/core'
 
 require('./StepSequencer.scss')
 
@@ -34,7 +35,7 @@ const SequencerView: React.FC<SequencerView.Props> = props => {
 
 	return <div className="SequencerView">
 		<div className="title">
-			<span>{props.name}</span>
+			<Typography>{props.name}</Typography>
 		</div>
 		<div className="sliders">
 			{props.sliders.map(slider => <div key={slider.id}>
