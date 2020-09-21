@@ -19,8 +19,8 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			{ test: /\.tsx?$/, loader: 'ts-loader'   },
-			{ test: /\.(mp3|png)$/, loader: 'file-loader', options: { name: '[path][name].[ext]' } },
+			{ test: /\.tsx?$/, loader: 'ts-loader' },
+			{ test: /\.(woff|woff2|eot|ttf|otf|mp3|png|svg)$/, loader: 'file-loader', options: { name: '[path][name].[ext]' } },
 			{ test: /\.s?css$/, loader: ['style-loader', 'css-loader', 'sass-loader'] },
 			{ test: /\.(vert|frag)$/, loader: 'raw-loader' },
 		]
@@ -28,7 +28,10 @@ module.exports = {
 	plugins: [
 		new HTMLWebpackPlugin({
 			title: 'React Audio Engine Test',
-			favicon: path.join(__dirname, 'src/favicon.png')
+			favicon: path.join(__dirname, 'src/favicon.png'),
+			meta: {
+				viewport: 'width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1',
+			},
 		})
 	],
 	output: {

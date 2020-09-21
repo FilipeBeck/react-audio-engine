@@ -1,11 +1,16 @@
+@import './components/mixins.scss';
+
 .AudioAnalyzer {
 	& > canvas {
+		max-width: 100%;
 		background-color: var(--dark);
 	}
 
 	& .controls {
 		width: 512px;
+		max-width: 100%;
 		& > div {
+			@extend %tiny-wrap;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -24,17 +29,37 @@
 					font-style: italic;
 				}
 			}
-			& > button {
-				padding: 10px;
-				font-weight: bold;
-				&:last-child {
-					margin-left: 10px;
+			& > .MuiButton {
+				&-root {
+					padding: 10px;
+					&:last-child {
+						margin-left: 10px;
+					}
+					& > .MuiButton-label {
+						font-weight: bold;
+					}
 				}
 			}
 		}
 		& > form {
 			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+			flex-wrap: wrap;
 			padding: 20px;
+			& > .MuiTextField {
+				&-root {
+					margin-bottom: 15px;
+					@media screen and (max-width: 640px) {
+						width: 100%;
+					}
+				}
+			}
+			& > .MuiButton {
+				&-root {
+					width: 100%;
+				}
+			}
 			& > label {
 				& > span {
 					font-size: 14px;

@@ -1,16 +1,20 @@
+@import './components/mixins.scss';
+
 .MultiTrack {
 	border: solid 2px var(--dark);
 	background-color: var(--light);
 	& > .master-controls {
+		@extend %tiny-wrap;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
+		padding: 10px;
 		& > .start {
-			margin: 20px;
 			font-weight: bold;
+			flex-basis: 500px;
 		}
-		& > .master-gain {
-
+		& > .gain {
+			margin: 0 10px;
 		}
 	}
 	& > .wrapper {
@@ -19,6 +23,7 @@
 				margin: 0;
 				padding: 0;
 				& > li {
+					@extend %tiny-wrap;
 					display: flex;
 					justify-content: space-around;
 					align-items: center;
@@ -26,23 +31,36 @@
 					padding: 20px;
 					border: {
 						top: solid 2px var(--dark);
-					};
+					}
 					&:last-child {
 						border-bottom: solid 2px var(--dark);
 					}
 					& > a.track {
 						color: var(--dark);
-						flex-basis: 200px;
+						flex-basis: 300px;
 					}
-					& > input.gain {
-						margin-left: 50px;
+					& > .gain {
+						margin: 0 10px;
 					}
-					& > button.play {
-						margin-left: 50px;
-						padding: 10px;
-						& > span {
-							display: block;
-							width: 75px;
+					& > .play {
+						text-transform: none;
+						& > .MuiButton-label {
+							& > .MuiSvgIcon {
+								&-root {
+									animation-name: loading-animation;
+									animation-duration: 1s;
+									animation-timing-function: ease-out;
+									animation-iteration-count: infinite;
+									@keyframes loading-animation {
+										from {
+											transform: rotate(0);
+										}
+										to {
+											transform: rotate(-360deg);
+										}
+									}
+								}
+							}
 						}
 					}
 				}

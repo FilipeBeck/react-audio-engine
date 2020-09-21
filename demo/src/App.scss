@@ -1,22 +1,9 @@
 :root {
-	font-family: sans-serif;
 	--dark: #003;
 	--light: #fafffa;
 	--border: #eee;
 	--purple: hsla(283, 92%, 44%, 1);
-	color: var(--dark);
-}
-
-body {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	margin: 0;
-	& > div {
-		height: 100%;
-	}
+	--drawer-width: 240px;
 }
 
 button, input {
@@ -26,51 +13,130 @@ button, input {
 	padding: 5px;
 }
 
-.App {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	& > header {
-		box-sizing: border-box;
-		width: 100%;
-		padding: 30px;
-		background-color: var(--dark);
-		color: var(--light);
-		font-size: 22px;
-		font-weight: bold;
-		text-align: center;
+%shiftable {
+	transition: all 0.2s;
+	&.unshift {
+		margin-left: 0;
 	}
-	& > .github-fork-ribbon {
-		&.right-top {
-			&:before {
-				background-color: black;
-			}
+	&.shift {
+		@media screen and (min-width: 640px) {
+			margin-left: var(--drawer-width);	
 		}
 	}
-	& > main {
-		display: grid;
-		grid-template-columns: max-content auto;
-		justify-items: center;
-		height: 100%;
-		& > nav {
-			padding: 10px;
-			border-right: solid 1px var(--border);
-			& > ul {
-				list-style: lower-greek;
-				padding: {
-					left: 30px;
-					right: 10px;
-				};
-				& > li {
-					& > a {
-						color: var(--dark);
-						text-decoration: none;
+}
+
+%menu {
+	width: var(--drawer-width);
+	& > .MuiPaper {
+		&-root {
+			width: var(--drawer-width);
+			& > .header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding-left: 10px;
+				background-color: #011;
+				& > .MuiBox {
+					&-root {
+						& > .logo {
+							margin: 10px 0;
+							padding: 2px;
+							background-image: radial-gradient(white, white, transparent);
+							border-radius: 50%;
+						}
+					}
+				}
+			}
+			& > .MuiList {
+				&-root {
+					& > .MuiListItem {
+						&-root {
+							& > a {
+								text-decoration: none;
+								&:visited {
+									color: inherit;
+								}
+								&.active {
+									& > .MuiListItemText {
+										&-root {
+											& > .MuiTypography {
+												&-root {
+													font-weight: bold;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
 		}
-		& > section {
-			padding: 50px;
+	}
+}
+
+body {
+	& > .MuiDrawer {
+		&-root {
+			@extend %menu;
+		}
+	}
+}
+
+.App {
+	& > .github-fork-ribbon {
+		position: fixed;
+		&:before {
+			background-color: black;
+		}
+	}
+	& > .MuiAppBar {
+		&-root {
+			@extend %shiftable;
+			& > .MuiToolbar {
+				&-root {
+					& > .MuiBox {
+						&-root {
+							display: flex;
+							justify-content: center;
+							flex-grow: 2;
+							text-align: center;
+							white-space: nowrap;
+							&:first-of-type, &:last-of-type {
+								flex-basis: 100px;
+								flex-grow: 1;
+							}
+							&:first-of-type {
+								justify-content: start;
+								text-align: left;
+							}
+							&:last-of-type {
+								justify-content: end;
+								text-align: right;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	& > .MuiDrawer {
+		&-root {
+			@extend %menu;
+		}
+	}
+	& > main {
+		@extend %shiftable;
+		display: flex;
+		justify-content: center;
+		margin-left: var(--drawer-width);
+		padding: 50px;
+		@media screen and (max-width: 640px) {
+			padding: 10px;
+		}
+		& > * {
+			max-width: 100%;
 		}
 	}
 }
