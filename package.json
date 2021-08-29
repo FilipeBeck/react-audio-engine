@@ -7,7 +7,8 @@
 	"license": "MIT",
 	"private": false,
 	"scripts": {
-		"start:dev": "webpack-dev-server --config ./demo/webpack.config.js --host 0.0.0.0"
+		"start:dev": "webpack-dev-server --config ./demo/webpack.config.js --host 0.0.0.0",
+		"build-package": "rm -rf ./app && tsc && cp *.md package.json ./app"
 	},
 	"peerDependencies": {
 		"react": "^17.0.2",
