@@ -50,7 +50,7 @@ class Record extends Scenario<Record.Attributes> {
 								const currentTimes = currentWhen ? (Array.isArray(currentWhen) && currentWhen || [currentWhen]) : undefined
 
 								if (currentTimes?.includes(time)) {
-									currentSuspension!.handler(this.context as OfflineAudioContext)
+									currentSuspension!.handler(this.context)
 								}
 								else {
 									this.context.resume()

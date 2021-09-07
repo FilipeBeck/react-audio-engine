@@ -12,7 +12,7 @@ abstract class Jack<$Node, $Attributes extends Module.Attributes> extends Branch
 	 * @param parameterization Parametrização a ser aplicada.
 	 */
 	protected static applyParameterization(context: BaseAudioContext, audioParam: AudioParam, parameterization?: Jack.Parameterization) {
-		if (typeof parameterization == 'function') {
+		if (typeof parameterization === 'function') {
 			parameterization = parameterization(context, audioParam)
 		}
 

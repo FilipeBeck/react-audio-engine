@@ -34,7 +34,7 @@ namespace Renderer {
 	 */
 	reconciler.injectIntoDevTools({
 		bundleType: 0,
-		version: '0.0.1',
+		version: '0.0.3',
 		rendererPackageName: 'react-audio-engine',
 	})
 }

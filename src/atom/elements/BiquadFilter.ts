@@ -22,9 +22,9 @@ class BiquadFilter extends Element<BiquadFilterNode, BiquadFilter.Attributes> {
 			case 'type':
 				node.type = value as BiquadFilter.Type ?? BiquadFilter.Type.LOWPASS
 			break
-			
+
 			case 'frequency': case 'detune': case 'Q': case 'gain': case 'type':
-				this.applyParameterization(name as keyof typeof node, value as Jack.Parameterization)
+				this.applyParameterization(name, value as Jack.Parameterization)
 			break
 
 			default: super.applyAttribute(name, value)
@@ -68,7 +68,7 @@ namespace BiquadFilter {
 	export const enum Type {
 		/**
 		 * Filtro de resonância lowpass padrão de segunda ordem com 12dB/octave rolloff. Frequências abaixo do ponto de corte passam; frequências acima são atenuadas.
-		 * 
+		 *
 		 * Comportamento dos atributos:
 		 * - `frequency` - Controla a frequência de corte.
 		 * - `Q` - Indica o quão perto a frequência chegou em relação ao ponto de corte. Quanto maior o valor, maior será a aproximação.
@@ -77,7 +77,7 @@ namespace BiquadFilter {
 		LOWPASS = 'lowpass',
 		/**
 		 * Filtro de resonância highpass padrão de segunda ordm com 12dB/octave rolloff. Frequências abaixo do ponto de corte são atenuadas; frequências acima passam.
-		 * 
+		 *
 		 * Comportamento dos atributos:
 		 * - `frequency` - Controla a frequência de corte.
 		 * - `Q` - Indica o quão perto a frequência chegou em relação ao ponto de corte. Quanto maior o valor, maior será a aproximação.
@@ -86,7 +86,7 @@ namespace BiquadFilter {
 		HIGHPASS = 'highpass',
 		/**
 		 * Filtro bandpass padrão de segunda ordem. Frequências fora do dado limite de frequências são atenuadas; frequências dentro do limite passam.
-		 * 
+		 *
 		 * Comportamento dos atributos:
 		 * - `frequency` - Controla o centro de alcance de frequências.
 		 * - `Q` - Controla a largura da banda de frequência. Quanto maior o valor Q, menor a frequência de banda.
@@ -95,7 +95,7 @@ namespace BiquadFilter {
 		BANDPASS = 'bandpass',
 		/**
 		 * Filtro lowshelf padrão de segunda ordem. Frequências menores que a frequência recebem um aumento, ou uma atenuação; frequências maiores não sofrem alterações.
-		 * 
+		 *
 		 * Comportamento dos atributos:
 		 * - `frequency` - O limite superior das frequênicas recebe um aumento ou atenuação.
 		 * - `Q` - Não utilizado.
@@ -104,7 +104,7 @@ namespace BiquadFilter {
 		LOWSHELF = 'lowshelf',
 		/**
 		 * Filtro highshelf padrão de segunda ordem. Frequências maiores que a frequência recebem aumento ou atenuação; frequências abaixo disso não sofrem alterações.
-		 * 
+		 *
 		 * Comportamento dos atributos:
 		 * - `frequency` - O limite inferior de frequências recebe aumento ou uma atenuação.
 		 * - `Q` - Não utilizado.
@@ -113,7 +113,7 @@ namespace BiquadFilter {
 		HIGHSHELF = 'highshelf',
 		/**
 		 * Frequências dentro da faixa de frequencias  recebem aumento ou atenuação; frequências fora da faixa não sofrem alterações.
-		 * 
+		 *
 		 * Comportamento dos atributos:
 		 * - `frequency` - O meio da faixa de frequência recebe um aumento ou uma atenuação.
 		 * - `Q` - Controla a largura da banda de frequência. Quanto maior o valor Q, menor a frequência de banda.
@@ -122,7 +122,7 @@ namespace BiquadFilter {
 		PEAKING = 'peaking',
 		/**
 		 * Filtro {@link http://en.wikipedia.org/wiki/Band-stop_filter notch} padrão, também chamado de filtro band-stop ou band-rejection. É o oposto do filtro de de bandpass: frequências fora da faixa de frequências atribuída passam; frequências de dentro da faixa são atenuadas.
-		 * 
+		 *
 		 * Comportamento dos atributos:
 		 * - `frequency` - O centro de alcance de frequências.
 		 * - `Q` - Controla a largura da banda de frequência. Quanto maior o valor Q, menor a frequência de banda.

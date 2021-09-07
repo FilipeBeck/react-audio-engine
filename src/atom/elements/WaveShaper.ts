@@ -18,8 +18,8 @@ class WaveShaper extends Element<WaveShaperNode, WaveShaper.Attributes> {
 		const node = this.node!
 
 		switch (name) {
-			case 'curve':      node.curve = value as Float32Array | undefined ?? null;                                     break
-			case 'oversample': node.oversample = value as WaveShaper.Oversample | undefined ?? WaveShaper.Oversample.NONE; break
+			case 'curve':      node.curve = value as Float32Array ?? null;                                     break
+			case 'oversample': node.oversample = value as WaveShaper.Oversample ?? WaveShaper.Oversample.NONE; break
 
 			default: super.applyAttribute(name, value)
 		}

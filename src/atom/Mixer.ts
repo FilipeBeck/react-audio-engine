@@ -1,6 +1,6 @@
 import Module from './Module'
 /**
- * Módulo que conecta cada filho de forma paralela com o módulo anterior e combina as suas saídas paralelamente. 
+ * Módulo que conecta cada filho de forma paralela com o módulo anterior e combina as suas saídas paralelamente.
  */
 class Mixer extends Module<Mixer.Attributes> {
 	/**

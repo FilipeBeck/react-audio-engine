@@ -59,30 +59,25 @@ class BufferSource extends ScheduledSource<AudioBufferSourceNode, BufferSource.A
 						const storedSchedulingAttribute = this.storedSchedulingAttribute
 
 						if (storedSchedulingAttribute) {
-							const when = storedSchedulingAttribute?.when ?? 0
-							const offset = storedSchedulingAttribute?.offset
-							const duration = storedSchedulingAttribute?.duration
-
+							const { when = 0, offset, duration } = storedSchedulingAttribute
 							this.startNode(when, offset, duration)
 						}
 						else if (this.attributes.start === true) {
 							this.startNode()
 						}
 
-						if (this.attributes.onLoaded && buffer) {
-							this.attributes.onLoaded(buffer, null)
+						if (buffer) {
+							this.attributes.onLoaded?.(buffer, null)
 						}
 					}
 					catch {
 						this.reconstruct()
 					}
 				}, error => {
-					if (this.attributes.onLoaded) {
-						this.attributes.onLoaded(null, error)
-					}
+					this.attributes.onLoaded?.(null, error)
 				})
 			break
-			
+
 			case 'loop':
 				node.loop = value as boolean ?? false
 			break
@@ -92,13 +87,13 @@ class BufferSource extends ScheduledSource<AudioBufferSourceNode, BufferSource.A
 			break
 
 			case 'detune': case 'playbackRate':
-				this.applyParameterization(name as keyof typeof node, value as Jack.Parameterization)
+				this.applyParameterization(name, value as Jack.Parameterization)
 			break
-			
+
 			case 'onLoading': case 'onLoaded':
 				return
 
-			default: super.applyAttribute(name as keyof ScheduledSource.Attributes, value as any)
+			default: super.applyAttribute(name, value)
 		}
 	}
 	/**

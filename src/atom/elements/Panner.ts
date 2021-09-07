@@ -19,17 +19,17 @@ class Panner extends Element<PannerNode, Panner.Attributes> {
 		const node = this.node!
 
 		switch (name) {
-			case 'coneInnerAngle': node.coneInnerAngle = value as number | undefined ?? 360;                                        break
-			case 'coneOuterAngle': node.coneOuterAngle = value as number | undefined ?? 360;                                        break
-			case 'coneOuterGain':  node.coneOuterGain = value as number | undefined ?? 0;                                           break
-			case 'distanceModel':  node.distanceModel = value as Panner.DistanceModel | undefined ?? Panner.DistanceModel.INVERSE;  break
-			case 'maxDistance':    node.maxDistance = value as number | undefined ?? 10_000;                                        break
-			case 'panningModel':   node.panningModel = value as Panner.PanningModel | undefined ?? Panner.PanningModel.EQUAL_POWER; break
-			case 'refDistance':    node.refDistance = value as number | undefined ?? 1;                                             break
-			case 'rolloffFactor':  node.rolloffFactor = value as number | undefined ?? 1;                                           break
+			case 'coneInnerAngle': node.coneInnerAngle = value as number ?? 360;                                        break
+			case 'coneOuterAngle': node.coneOuterAngle = value as number ?? 360;                                        break
+			case 'coneOuterGain':  node.coneOuterGain = value as number ?? 0;                                           break
+			case 'distanceModel':  node.distanceModel = value as Panner.DistanceModel ?? Panner.DistanceModel.INVERSE;  break
+			case 'maxDistance':    node.maxDistance = value as number ?? 10_000;                                        break
+			case 'panningModel':   node.panningModel = value as Panner.PanningModel ?? Panner.PanningModel.EQUAL_POWER; break
+			case 'refDistance':    node.refDistance = value as number ?? 1;                                             break
+			case 'rolloffFactor':  node.rolloffFactor = value as number ?? 1;                                           break
 
 			case 'orientationX': case 'orientationY': case 'orientationZ': case 'positionX': case 'positionY': case 'positionZ':
-				this.applyParameterization(name as keyof typeof node, value as Jack.Parameterization)
+				this.applyParameterization(name, value as Jack.Parameterization)
 			break
 
 			default: super.applyAttribute(name, value)

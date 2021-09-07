@@ -20,7 +20,7 @@ class ConstantSource extends ScheduledSource<ConstantSourceNode, ConstantSource.
 			case 'offset':
 				this.applyParameterization('offset', value as Jack.Parameterization)
 			break
-			
+
 			default: super.applyAttribute(name, value)
 		}
 	}

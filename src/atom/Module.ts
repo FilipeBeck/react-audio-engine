@@ -120,7 +120,7 @@ abstract class Module<$Attributes extends Module.Attributes = Module.Attributes>
 	public get back(): Module | undefined {
 		const parent = this.parent
 		const indexOfThis = parent?.children.indexOf(this)
-		
+
 		return indexOfThis !== undefined ? parent!.children[indexOfThis - 1] : undefined
 	}
 	/**
@@ -256,7 +256,7 @@ abstract class Module<$Attributes extends Module.Attributes = Module.Attributes>
 			case 'name':
 				this.name as any !== value && (this.name = value as $Attributes['name'])
 			break
-			
+
 			default: throw new Error(`Attribute \`${name}\` not exists.`)
 		}
 	}

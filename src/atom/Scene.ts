@@ -45,7 +45,7 @@ class Scene extends Scenario<Scene.Attributes> {
 			case 'onStateChange':
 				this.updateEventListener('statechange', value, this.attributes.onStateChange)
 			break
-			
+
 			default: super.applyAttribute(name, value)
 		}
 	}

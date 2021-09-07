@@ -18,8 +18,8 @@ class Convolver extends Element<ConvolverNode, Convolver.Attributes> {
 		const node = this.node!
 
 		switch (name) {
-			case 'buffer':    node.buffer = value as AudioBuffer | undefined ?? null; break
-			case 'normalize': node.normalize = value as boolean | undefined ?? true;  break
+			case 'buffer':    node.buffer = value as AudioBuffer ?? null; break
+			case 'normalize': node.normalize = value as boolean ?? true;  break
 
 			default: super.applyAttribute(name, value)
 		}

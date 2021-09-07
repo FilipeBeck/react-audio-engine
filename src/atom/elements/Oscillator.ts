@@ -19,7 +19,8 @@ class Oscillator extends ScheduledSource<OscillatorNode, Oscillator.Attributes> 
 		const periodicWave = this.attributes.periodicWave
 
 		if (periodicWave) {
-			node.setPeriodicWave(this.context!.createPeriodicWave(periodicWave.real || [], periodicWave.imag || [], periodicWave))
+			const { real = [], imag = [] } = periodicWave
+			node.setPeriodicWave(this.context!.createPeriodicWave(real, imag, periodicWave))
 		}
 
 		return node
@@ -34,7 +35,7 @@ class Oscillator extends ScheduledSource<OscillatorNode, Oscillator.Attributes> 
 
 		switch (name) {
 			case 'frequency': case 'detune':
-				this.applyParameterization(name as keyof typeof node, value as Jack.Parameterization);
+				this.applyParameterization(name, value as Jack.Parameterization);
 			break
 
 			case 'type':

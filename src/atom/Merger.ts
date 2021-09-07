@@ -31,7 +31,7 @@ class Merger extends Branch<Merger.Attributes> {
 				}
 			}
 		}
-		
+
 		return nodes
 	}
 	/**
@@ -58,7 +58,7 @@ class Merger extends Branch<Merger.Attributes> {
 	protected applyAttribute<$Name extends keyof Merger.Attributes>(name: $Name, value: Merger.Attributes[$Name]): void {
 		switch (name) {
 			case 'links':
-				this.links = new Set(value as Merger.Attributes['links'])
+				this.links = new Set(value)
 			break
 
 			default: super.applyAttribute(name, value)

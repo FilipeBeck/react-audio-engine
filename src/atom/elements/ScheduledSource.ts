@@ -84,9 +84,9 @@ abstract class ScheduledSource<$Node extends AudioScheduledSourceNode, $Attribut
 					}
 					else if (typeofValue === 'number') {
 						if (!this.alreadyStarted) {
-							this.startNode(value as any as number)
+							this.startNode(value as any)
 						}
-						else if (value as any as number !== storedSchedulingAttribute?.when) {
+						else if (value as any !== storedSchedulingAttribute?.when) {
 							this.reconstruct()
 						}
 					}

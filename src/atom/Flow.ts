@@ -15,7 +15,7 @@ export default abstract class Flow<$Attributes extends Module.Attributes = Modul
 				return nodes
 			}
 		}
-		
+
 		return Module.EMPTY_SET
 	}
 	/**

@@ -58,11 +58,11 @@ const Delegate: ReactReconciler.HostConfig<
 	/**
 	 * Clear time out.
 	 */
-	clearTimeout: clearTimeout,
+	clearTimeout,
 	/**
 	 * Set time out.
 	 */
-	setTimeout: setTimeout,
+	setTimeout,
 	/**
 	 * No time out.
 	 */
@@ -139,11 +139,11 @@ const Delegate: ReactReconciler.HostConfig<
 			case Tag.RECORD:
 				return new ATOM.Record(props)
 			case Tag.ANALYSER:
-				return new ATOM.Analyser(props as ATOM.Analyser.Attributes)
+				return new ATOM.Analyser(props)
 			case Tag.BUFFER_SOURCE:
 				return new ATOM.BufferSource(props as ATOM.BufferSource.Attributes)
 			case Tag.BIQUAD_FILTER:
-				return new ATOM.BiquadFilter(props as ATOM.BiquadFilter.Attributes)
+				return new ATOM.BiquadFilter(props)
 			case Tag.CHANNEL_MERGER:
 				throw new Error('Not implemented.')
 			case Tag.CHANNEL_SPLITTER:
@@ -151,33 +151,33 @@ const Delegate: ReactReconciler.HostConfig<
 			case Tag.CONSTANT_SOURCE:
 				return new ATOM.ConstantSource(props as ATOM.ConstantSource.Attributes)
 			case Tag.CONVOLVER:
-				return new ATOM.Convolver(props as ATOM.Convolver.Attributes)
+				return new ATOM.Convolver(props)
 			case Tag.DELAY:
-				return new ATOM.Delay(props as ATOM.Delay.Attributes)
+				return new ATOM.Delay(props)
 			case Tag.DYNAMICS_COMPRESSOR:
-				return new ATOM.DynamicsCompressor(props as ATOM.DynamicsCompressor.Attributes)
+				return new ATOM.DynamicsCompressor(props)
 			case Tag.GAIN:
-				return new ATOM.Gain(props as ATOM.Gain.Attributes)
+				return new ATOM.Gain(props)
 			case Tag.IIR_FILTER:
 				return new ATOM.IIRFilter(props as ATOM.IIRFilter.Attributes)
 			case Tag.MEDIA_ELEMENT_SOURCE:
 				return new ATOM.MediaElementSource(props as ATOM.MediaElementSource.Attributes)
 			case Tag.MEDIA_STREAM_DESTINATION:
-				return new ATOM.MediaStreamDestination(props as ATOM.MediaStreamDestination.Attributes)
+				return new ATOM.MediaStreamDestination(props)
 			case Tag.MEDIA_STREAM_SOURCE:
 				return new ATOM.MediaStreamSource(props as ATOM.MediaStreamSource.Attributes)
 			case Tag.OSCILLATOR:
 				return new ATOM.Oscillator(props as ATOM.Oscillator.Attributes)
 			case Tag.PANNER:
-				return new ATOM.Panner(props as ATOM.Panner.Attributes)
+				return new ATOM.Panner(props)
 			case Tag.WAVE_SHAPER:
-				return new ATOM.WaveShaper(props as ATOM.WaveShaper.Attributes)
+				return new ATOM.WaveShaper(props)
 			case Tag.STEREO_PANNER:
-				return new ATOM.StereoPanner(props as ATOM.StereoPanner.Attributes)
+				return new ATOM.StereoPanner(props)
 			case Tag.WORKLET:
 				return new ATOM.Worklet(props as ATOM.Worklet.Attributes)
 			case Tag.SCRIPT_PROCESSOR:
-				return new ATOM.ScriptProcessor(props as ATOM.ScriptProcessor.Attributes)
+				return new ATOM.ScriptProcessor(props)
 
 			default:
 				throw new Error(`Element of type "${type}" not recognized.`)

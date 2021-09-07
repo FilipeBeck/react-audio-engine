@@ -81,11 +81,11 @@ namespace Worklet {
 		/**
 		 * Um dicionário com valores iniciais para instâncias de {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioParam `AudioParam`} customizadas, onde a chave é o nome do parâmetro customizado.
 		 */
-		parameterData?: { [key: string]: number }
+		parameterData?: Record<string, number>
 		/**
-		 * 
+		 *
 		 */
-		parameters?: { [key: string]: Jack.Parameterization }
+		parameters?: Record<string, Jack.Parameterization>
 		/**
 		 * Qualquer dado adicional que pode ser usado para inicialização customizada.
 		 */

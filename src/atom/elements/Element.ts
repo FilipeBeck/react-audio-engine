@@ -167,7 +167,7 @@ namespace Element {
 			export const enum ChannelCountMode {
 				/**
 				 * O número de canais é igual ao número máximo de canais de todas as conexões. Nesse caso, `channelCount` é ignorado e apenas um _up-mix_ acontece.
-				 * 
+				 *
 				 * Classes que usam esse valor como _default_:
 				 * - {@link https://developer.mozilla.org/en-US/docs/Web/API/GainNode `GainNode`}
 				 * - {@link https://developer.mozilla.org/en-US/docs/Web/API/DelayNode `DelayNode`}
@@ -179,7 +179,7 @@ namespace Element {
 				MAX = 'max',
 				/**
 				 * O número de canais é igual ao número máximo de canais de todas as conexões, não excedendo o valor de `channelCount`.
-				 * 
+				 *
 				 * Classes que usam esse valor como _default_:
 				 * - {@link https://developer.mozilla.org/en-US/docs/Web/API/PannerNode `PannerNode`}
 				 * - {@link https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode `ConvolverNode`}
@@ -188,7 +188,7 @@ namespace Element {
 				CLAMPED_MAX = 'clamped-max',
 				/**
 				 * O número de canais é definido pelo valor de `channelCount`.
-				 * 
+				 *
 				 * Classes que usam esse valor como _default_:
 				 * - {@link https://developer.mozilla.org/en-US/docs/Web/API/AudioDestinationNode `AudioDestinationNode`}
 				 * - {@link https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode `AnalyserNode`}

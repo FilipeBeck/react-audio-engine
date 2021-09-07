@@ -18,7 +18,7 @@ class DynamicsCompressor extends Element<DynamicsCompressorNode, DynamicsCompres
 	protected applyAttribute<$Name extends keyof DynamicsCompressor.Attributes>(name: $Name, value: DynamicsCompressor.Attributes[$Name]): void {
 		switch (name) {
 			case 'threshold': case 'knee': case 'ratio': case 'attack': case 'release':
-				this.applyParameterization(name as keyof DynamicsCompressorNode, value as Jack.Parameterization)
+				this.applyParameterization(name, value as Jack.Parameterization)
 			break
 
 			default: super.applyAttribute(name, value)
