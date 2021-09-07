@@ -96,7 +96,7 @@ Os nós que concretizam `Element` são:
 
 Conduz o sinal de áudio serialmente atráves dos módulos filhos. Sua entrada é a entrada do primeiro módulo filho e sua saída é a saída do último módulo filho.
 
-<img src="docs/track.svg" height="200"/>
+<img src="https://github.com/FilipeBeck/react-audio-engine/blob/develop/docs/track.svg" height="200"/>
 
 ---
 
@@ -104,7 +104,7 @@ Conduz o sinal de áudio serialmente atráves dos módulos filhos. Sua entrada �
 
 Combina o sinal de áudio paralelamente através dos módulos filhos. Sua a entrada é a combinação das entradas dos módulos filhos e sua saída é a combinação da saída dos módulos filhos.
 
-<img src="docs/mixer.svg" height="200"/>
+<img src="https://github.com/FilipeBeck/react-audio-engine/blob/develop/docs/mixer.svg" height="200"/>
 
 ---
 
@@ -112,4 +112,4 @@ Combina o sinal de áudio paralelamente através dos módulos filhos. Sua a entr
 
 Ramifica o sinal de áudio em um fluxo serial alternativo através dos módulos filhos cujo destino diverge do fluxo original (tendo `BaseAudioContext.destination` como destino se não fornecido explicitamente). É o comportamento implementado por todos os elementos.
 
-<img src="docs/branch.svg" height="200"/>
+<img src="https://github.com/FilipeBeck/react-audio-engine/blob/develop/docs/branch.svg" height="200"/>
