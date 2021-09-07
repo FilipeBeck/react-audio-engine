@@ -6,6 +6,10 @@
 	"author": "Filipe Roberto Beck",
 	"license": "MIT",
 	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/FilipeBeck/react-audio-engine"
+	},
 	"scripts": {
 		"start:dev": "webpack-dev-server --config ./demo/webpack.config.js --host 0.0.0.0",
 		"build-package": "rm -rf ./app tsbuildinfo.json && tsc && cp -r *.md package.json docs ./app"
