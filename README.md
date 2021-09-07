@@ -4,7 +4,7 @@ Integração de [React](https://reactjs.org/) com [Web Audio API](https://develo
 
 ## Instalação
 
-NPM: https://www.npmjs.com/package/react-augion-engine
+NPM: https://www.npmjs.com/package/react-audio-engine
 
 ## Desenvolvimento
 
@@ -23,7 +23,7 @@ NPM: https://www.npmjs.com/package/react-augion-engine
 Raiz da árvore de áudio. Todas as cenas de áudio devem estar contidas em um `Stage`.
 
 ```tsx
-import { ATOM, ReactATOM, Scene, Record } from "react-audio-engine";
+import { ATOM, ReactATOM, Scene } from 'react-audio-engine'
 
 const stage = new ATOM.Stage();
 
@@ -35,27 +35,29 @@ ReactATOM.render(<Scene {...props} />, stage);
 Responsável pela criação e gerenciamento dos contextos de áudio. Todos os demais módulos devem estar contidos em uma cena.
 
 ```tsx
-import { Scene, Track, Gain, BufferSource } from 'react-audion-engine'
+import { ATOM, Scene, Track, Gain, BufferSource } from 'react-audio-engine'
 
-function MyScene(props: { masterGain: number, bugger: ArrayBuffer }) {
-  return <Scene>
-    <Track>
-      <BufferSource buffer={props.buffer}>
-      <Gain level={props.masterGain}/>
-    </Track>
-  </Scene>
+function MyScene(props: { masterGain: number, buffer: ArrayBuffer }) {
+  return (
+    <Scene sampleRate={88200} latencyHint={ATOM.Scene.LatencyCategory.PLAYBACK}>
+      <Track>
+        <BufferSource buffer={props.buffer}>
+        <Gain level={props.masterGain}/>
+      </Track>
+    </Scene>
+  )
 }
 ```
 
 ## Record
 
-Semelhante à `Scene`, mas renderiza o áudio em memória o mais repidamente possível.
+Semelhante à `Scene`, mas renderiza o áudio em memória o mais rapidamente possível.
 
 ```tsx
-import { Scene, Record, Track } from "react-audio-engine";
+import { Scene, Record, Track } from 'react-audio-engine'
 
 function MyScene(props: { tracks: Track.Props[]; isSaving: boolean }) {
-  const RecordOrScene = (isSaving && Record) || Scene;
+  const RecordOrScene = isSaving ? Record : Scene;
 
   return (
     <RecordOrScene>
@@ -86,7 +88,6 @@ Os nós que concretizam `Element` são:
 - [`MediaStreamSource`](./src/atom/elements/MediaStreamSource.ts)
 - [`Oscillator`](./src/atom/elements/Oscillator.ts)
 - [`Panner`](./src/atom/elements/Panner.ts)
-- [`ScheduledSource`](./src/atom/elements/ScheduledSource.ts)
 - [`ScriptProcessor`](./src/atom/elements/ScriptProcessor.ts)
 - [`StereoPanner`](./src/atom/elements/StereoPanner.ts)
 - [`WaveShaper`](./src/atom/elements/WaveShaper.ts)
