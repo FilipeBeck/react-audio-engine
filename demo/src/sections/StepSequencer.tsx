@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 import { ATOM } from '../../../src'
 import { Mixer, Scene } from '../../../src/reconciler/Components'
 import { RouteComponentProps } from '@reach/router'
-import AudioView from '../AudioView'
+import { AudioView } from '../../../src'
 import { SweepPad } from './components/audio/SweepPad'
 import { Typography } from '@material-ui/core'
 

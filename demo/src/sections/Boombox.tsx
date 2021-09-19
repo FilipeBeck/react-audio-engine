@@ -3,7 +3,7 @@ import React from 'react'
 import Event from '../../../src/toolkit/Event'
 import { BiquadFilter, Gain, MediaElementSource, Scene, StereoPanner } from '../../../src/reconciler/Components'
 import { RouteComponentProps } from '@reach/router'
-import AudioView from '../AudioView'
+import { AudioView } from '../../../src'
 import { ATOM } from '../../../src'
 import { Button, Checkbox, Slider, TextField, Typography } from '@material-ui/core'
 

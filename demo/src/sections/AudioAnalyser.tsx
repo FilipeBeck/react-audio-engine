@@ -5,7 +5,7 @@ import * as ATOM from '../../../src/atom'
 import Event from '../../../src/toolkit/Event'
 import { BufferSource, Scene } from '../../../src/reconciler/Components'
 import { RouteComponentProps } from '@reach/router'
-import AudioView from '../AudioView'
+import { AudioView } from '../../../src'
 import { Waveloscope } from './components/audio/Waveloscope'
 import { Button, TextField, Typography } from '@material-ui/core'
 
