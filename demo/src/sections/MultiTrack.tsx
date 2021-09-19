@@ -19,7 +19,7 @@ const audioFiles = [
 ]
 
 class MultiTrack extends AudioView<MultiTrack.Props, MultiTrack.State> {
-	public state: MultiTrack.State = {
+	public override state: MultiTrack.State = {
 		tracks: ['Lead Guitar', 'Bass Guitar', 'Drums', 'Horns', 'Clav'].map(name => ({
 			name,
 			buffer: null,
@@ -80,21 +80,21 @@ class MultiTrack extends AudioView<MultiTrack.Props, MultiTrack.State> {
 	public handleSceneSourceLoad(index: number): void {
 		const tracks = [...this.state.tracks]
 
-		tracks[index].loadingForScene = false
+		tracks[index]!.loadingForScene = false
 		this.setState({ tracks })
 	}
 
 	public handleRecordSourceLoading(index: number): void {
 		const tracks = [...this.state.tracks]
 
-		tracks[index].loadingForRecord = true
+		tracks[index]!.loadingForRecord = true
 		this.setState({ tracks })
 	}
 
 	public handleRecordSourceLoaded(index: number): void {
 		const tracks = [ ...this.state.tracks]
 
-		tracks[index].loadingForRecord = false
+		tracks[index]!.loadingForRecord = false
 		this.setState({ tracks })
 	}
 
@@ -152,7 +152,7 @@ class MultiTrack extends AudioView<MultiTrack.Props, MultiTrack.State> {
 				<section className="tracks">
 					<ul>
 						{this.state.tracks.map((track, i) => <li key={audioFiles[i]}>
-							<Link to={audioFiles[i]} className="track" target="new">
+							<Link to={audioFiles[i]!} className="track" target="new">
 								<Typography>{track.name}</Typography>
 							</Link>
 							<Slider
@@ -198,7 +198,7 @@ class MultiTrack extends AudioView<MultiTrack.Props, MultiTrack.State> {
 
 	public changeGain(value: number, index: number): void {
 		const tracks = this.state.tracks.slice()
-		tracks[index].gain = value
+		tracks[index]!.gain = value
 
 		this.setState({ tracks })
 	}
@@ -206,24 +206,25 @@ class MultiTrack extends AudioView<MultiTrack.Props, MultiTrack.State> {
 	public processTrack(event: Event<HTMLButtonElement>) {
 		const audioIndex = parseInt(event.currentTarget!.getAttribute('data-audio-index') as string)
 		let tracks = this.state.tracks.slice()
+		const track = tracks[audioIndex]!
 
-		if (!tracks[audioIndex].loadingForScene) {
-			if (tracks[audioIndex].buffer) {
-				tracks[audioIndex].buffer = null
+		if (!track.loadingForScene) {
+			if (track.buffer) {
+				track.buffer = null
 
 				this.setState({ tracks })
 			}
 			else {
-				tracks[audioIndex].loadingForScene = true
+				track.loadingForScene = true
 				this.setState({ tracks })
 
 				const request = new XMLHttpRequest()
 
-				request.open('GET', audioFiles[audioIndex], true);
+				request.open('GET', audioFiles[audioIndex]!, true);
 				request.responseType = 'arraybuffer';
 				request.onload = () => {
 					tracks = tracks.slice()
-					tracks[audioIndex].buffer = request.response
+					track.buffer = request.response
 					this.setState({ tracks })
 				}
 				request.send()

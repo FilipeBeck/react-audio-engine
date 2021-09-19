@@ -20,7 +20,7 @@ class Scene extends Scenario<Scene.Attributes> {
 			catch {}
 		}
 	})
-	public readonly context!: AudioContext
+	public override readonly context!: AudioContext
 	/**
 	 * Lista com os nomes de todos os atributos que não podem ser alterados após o nó ser construido.
 	 */
@@ -40,7 +40,7 @@ class Scene extends Scenario<Scene.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof Scene.Attributes>(name: $Name, value: Scene.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof Scene.Attributes>(name: $Name, value: Scene.Attributes[$Name]): void {
 		switch (name) {
 			case 'onStateChange':
 				this.updateEventListener('statechange', value, this.attributes.onStateChange)
@@ -62,7 +62,7 @@ class Scene extends Scenario<Scene.Attributes> {
 	/**
 	 * Cria um novo contexto e atualiza seus atributos.
 	 */
-	protected refreshNode(): void {
+	protected override refreshNode(): void {
 		(this.context as any) = new Scene.AudioContext(this.attributes)
 		super.refreshNode()
 	}

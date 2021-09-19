@@ -45,7 +45,7 @@ const routes = {
 type RouteKey = keyof typeof routes
 
 class App extends React.Component<{}, App.State> {
-	public state: App.State = {
+	public override state: App.State = {
 		isMenuOpen: !(device.phone || device.tablet)
 	}
 
@@ -64,7 +64,7 @@ class App extends React.Component<{}, App.State> {
 		this.forceUpdate()
 	}
 
-	public render(): ReactNode {
+	public override render(): ReactNode {
 		const isMenuOpen = this.state.isMenuOpen
 
 		return <ThemeProvider theme={theme}>

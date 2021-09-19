@@ -7,12 +7,12 @@ export default class Stage extends Container {
 	/**
 	 * Cenários. As instância de `BaseAudioContext` dos cenários só existem enquanto os mesmos estiverem contidos em um `Stage`.
 	 */
-	readonly children!: Scenario<any>[]
+	public override readonly children!: Scenario<any>[]
 	/**
 	 * Adiciona o cenário `child` como último elemento de `this`.
 	 * @param child Cenário a ser adicionado.
 	 */
-	public appendChild(child: Scenario<any>): void {
+	public override appendChild(child: Scenario<any>): void {
 		super.appendChild(child)
 		child.stage = this
 	}
@@ -21,7 +21,7 @@ export default class Stage extends Container {
 	 * @param child Cenário a ser adicionado.
 	 * @param frontChild Cenário atrás do qual `child` será adicionado.
 	 */
-	public insertChildBefore(child: Scenario<any>, frontChild: Scenario<any>): void {
+	public override insertChildBefore(child: Scenario<any>, frontChild: Scenario<any>): void {
 		super.insertChildBefore(child, frontChild)
 		child.stage = this
 	}
@@ -29,7 +29,7 @@ export default class Stage extends Container {
 	 * Remove o cenário `child` de `this`.
 	 * @param child Cenário a ser removido.
 	 */
-	public removeChild(child: Scenario<any>): void {
+	public override removeChild(child: Scenario<any>): void {
 		super.removeChild(child)
 		child.stage = undefined
 	}

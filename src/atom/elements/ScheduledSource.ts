@@ -44,7 +44,7 @@ abstract class ScheduledSource<$Node extends AudioScheduledSourceNode, $Attribut
 	/**
 	 * Cria e retorna um novo nó.
 	 */
-	public refreshNode(): void {
+	public override refreshNode(): void {
 		this.alreadyStarted = false
 		super.refreshNode()
 	}
@@ -53,7 +53,7 @@ abstract class ScheduledSource<$Node extends AudioScheduledSourceNode, $Attribut
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof $Attributes>(name: $Name, value: $Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof $Attributes>(name: $Name, value: $Attributes[$Name]): void {
 		const node = this.node!
 
 		switch (name) {

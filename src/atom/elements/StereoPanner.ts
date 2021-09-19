@@ -15,7 +15,7 @@ class StereoPanner extends Element<StereoPannerNode, StereoPanner.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof StereoPanner.Attributes>(name: $Name, value: StereoPanner.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof StereoPanner.Attributes>(name: $Name, value: StereoPanner.Attributes[$Name]): void {
 		switch (name) {
 			case 'pan':
 				this.applyParameterization(name, value as Jack.Parameterization)

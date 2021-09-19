@@ -15,7 +15,7 @@ class ConstantSource extends ScheduledSource<ConstantSourceNode, ConstantSource.
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof ConstantSource.Attributes>(name: $Name, value: ConstantSource.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof ConstantSource.Attributes>(name: $Name, value: ConstantSource.Attributes[$Name]): void {
 		switch (name) {
 			case 'offset':
 				this.applyParameterization('offset', value as Jack.Parameterization)

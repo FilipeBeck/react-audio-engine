@@ -5,7 +5,7 @@ import QueuedMemoizedRunner from '../../src/toolkit/QueuedMemoizedRunner'
 
 abstract class AudioView<$Props = {}, $State = {}> extends React.Component<$Props, $State> {
 	public static Context = React.createContext<AudioView.ContextType>({})
-	public static contextType = AudioView.Context
+	public static override contextType = AudioView.Context
 
 	private stage?: ATOM.Stage
 
@@ -16,15 +16,15 @@ abstract class AudioView<$Props = {}, $State = {}> extends React.Component<$Prop
 		})
 	}
 
-	public render() {
+	public override render() {
 		return this.renderView()
 	}
 
-	public componentDidUpdate(): void {
+	public override componentDidUpdate(): void {
 		this.updateAudio()
 	}
 
-	public componentWillUnmount(): void {
+	public override componentWillUnmount(): void {
 		const stage = this.context.stage || this.stage
 
 		if (stage) {

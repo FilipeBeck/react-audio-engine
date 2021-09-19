@@ -12,7 +12,7 @@ require('./Boombox.scss')
 const audioURL = require('./assets/outfoxing.mp3').default as string
 
 class Boombox extends AudioView<Boombox.Props, Boombox.State> {
-	public state: Boombox.State = {
+	public override state: Boombox.State = {
 		audioElement: null,
 		gainLevel: 1,
 		pan: 0,
@@ -195,7 +195,7 @@ class Boombox extends AudioView<Boombox.Props, Boombox.State> {
 		}
 	}
 
-	public componentDidUpdate(): void {
+	public override componentDidUpdate(): void {
 		super.componentDidUpdate()
 		const audioElement = this.state.audioElement
 

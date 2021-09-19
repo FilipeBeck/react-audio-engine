@@ -35,7 +35,7 @@ abstract class Element<$Node extends AudioNode, $Attributes extends Element.Attr
 			this.notifyThreeMutation()
 		}
 	})
-	protected context: BaseAudioContext | undefined
+	protected override context?: BaseAudioContext
 	/**
 	 * Conjunto com uma única instância de `AudioNode` como entrada.
 	 */
@@ -55,7 +55,7 @@ abstract class Element<$Node extends AudioNode, $Attributes extends Element.Attr
 	/**
 	 * Conecta `this` ao fluxo do contenedor e ao primeiro módulo filho.
 	 */
-	protected connect(): void {
+	protected override connect(): void {
 		super.connect()
 
 		const firstChild = this.children[0] as Module | undefined
@@ -67,7 +67,7 @@ abstract class Element<$Node extends AudioNode, $Attributes extends Element.Attr
 	/**
 	 * Desconecta `this` do fluxo do contenedor e do primeiro módulo filho.
 	 */
-	protected disconnect(): void {
+	protected override disconnect(): void {
 		super.disconnect()
 
 		const firstChild = this.children[0] as Module | undefined
@@ -79,7 +79,7 @@ abstract class Element<$Node extends AudioNode, $Attributes extends Element.Attr
 	/**
 	 * Recupera os primeiros nós não vazios antes de `child` ou o nó de `this` se for o primeiro módulo filho.
 	 */
-	protected getFluentBackNodesToChild(child: Module): Set<AudioNode> {
+	protected override getFluentBackNodesToChild(child: Module): Set<AudioNode> {
 		const backNodes = super.getFluentBackNodesToChild(child)
 		return backNodes.size > 0 ? backNodes : this.node && new Set([this.node]) || Module.EMPTY_SET
 	}
@@ -88,7 +88,7 @@ abstract class Element<$Node extends AudioNode, $Attributes extends Element.Attr
 	 * @param name Nome do atributo.
 	 * @param value valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof $Attributes>(name: $Name, value: $Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof $Attributes>(name: $Name, value: $Attributes[$Name]): void {
 		const node = this.node!
 
 		switch (name) {
@@ -125,7 +125,7 @@ abstract class Element<$Node extends AudioNode, $Attributes extends Element.Attr
 	/**
 	 * Cria e retorna um novo nó com o contexto corrente ou deleta o nó atual se não houver contexto.
 	 */
-	protected refreshNode(): void {
+	protected override refreshNode(): void {
 		if (this.context) {
 			(this.node as any) = this.constructNode()
 			super.refreshNode()

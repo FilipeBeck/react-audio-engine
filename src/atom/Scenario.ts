@@ -21,7 +21,7 @@ abstract class Scenario<$Attributes extends Scenario.Attributes> extends Jack<Ba
 		(this.node as any) = this.context
 		this.updateContextExecution()
 	})
-	public readonly context!: BaseAudioContext
+	public override readonly context!: BaseAudioContext
 	/**
 	 * Determina se o contexto de áudio está ou não executando.
 	 */
@@ -56,7 +56,7 @@ abstract class Scenario<$Attributes extends Scenario.Attributes> extends Jack<Ba
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof $Attributes>(name: $Name, value: $Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof $Attributes>(name: $Name, value: $Attributes[$Name]): void {
 		switch (name) {
 			case 'active':
 				this.active = value as $Attributes['active'] ?? true

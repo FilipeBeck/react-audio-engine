@@ -7,7 +7,7 @@ class Oscillator extends ScheduledSource<OscillatorNode, Oscillator.Attributes> 
 	/**
 	 * Lista com os nomes de todos os atributos que não podem ser alterados após o nó ser construido.
 	 */
-	protected get attributesConstructionKeys(): Array<keyof Oscillator.Attributes> {
+	protected override get attributesConstructionKeys(): Array<keyof Oscillator.Attributes> {
 		return ['periodicWave']
 	}
 	/**
@@ -30,7 +30,7 @@ class Oscillator extends ScheduledSource<OscillatorNode, Oscillator.Attributes> 
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof Oscillator.Attributes>(name: $Name, value: Oscillator.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof Oscillator.Attributes>(name: $Name, value: Oscillator.Attributes[$Name]): void {
 		const node = this.node!
 
 		switch (name) {

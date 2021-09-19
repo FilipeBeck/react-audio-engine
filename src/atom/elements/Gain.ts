@@ -15,7 +15,7 @@ class Gain extends Element<GainNode, Gain.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof Gain.Attributes>(name: $Name, value: Gain.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof Gain.Attributes>(name: $Name, value: Gain.Attributes[$Name]): void {
 		switch (name) {
 			case 'level':
 				this.applyParameterization('gain', value as Jack.Parameterization)

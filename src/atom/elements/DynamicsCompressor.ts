@@ -15,7 +15,7 @@ class DynamicsCompressor extends Element<DynamicsCompressorNode, DynamicsCompres
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof DynamicsCompressor.Attributes>(name: $Name, value: DynamicsCompressor.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof DynamicsCompressor.Attributes>(name: $Name, value: DynamicsCompressor.Attributes[$Name]): void {
 		switch (name) {
 			case 'threshold': case 'knee': case 'ratio': case 'attack': case 'release':
 				this.applyParameterization(name, value as Jack.Parameterization)

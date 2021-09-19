@@ -9,7 +9,7 @@ class BufferSource extends ScheduledSource<AudioBufferSourceNode, BufferSource.A
 	/**
 	 * Cria um novo nó e atualiza seus atributos.
 	 */
-	public refreshNode(): void {
+	public override refreshNode(): void {
 		this.alreadyBuffered = false
 		super.refreshNode()
 	}
@@ -24,7 +24,7 @@ class BufferSource extends ScheduledSource<AudioBufferSourceNode, BufferSource.A
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof BufferSource.Attributes>(name: $Name, value: BufferSource.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof BufferSource.Attributes>(name: $Name, value: BufferSource.Attributes[$Name]): void {
 		const node = this.node!
 
 		switch (name) {

@@ -98,7 +98,7 @@ abstract class Module<$Attributes extends Module.Attributes = Module.Attributes>
 	/**
 	 * Módulos filhos.
 	 */
-	public readonly children!: Module[]
+	public override readonly children!: Module[]
 	/**
 	 * Módulo raiz.
 	 */
@@ -207,7 +207,7 @@ abstract class Module<$Attributes extends Module.Attributes = Module.Attributes>
 	 * Adiciona o módulo `child` como último componente de `this`.
 	 * @param child Módulo a ser adicionado.
 	 */
-	public appendChild(child: Module): void {
+	public override appendChild(child: Module): void {
 		this.willInsertChild(child)
 		super.appendChild(child)
 		this.didInsertChild(child)
@@ -217,7 +217,7 @@ abstract class Module<$Attributes extends Module.Attributes = Module.Attributes>
 	 * @param child Módulo a ser adicionado.
 	 * @param frontChild Módulo atrás do qual `child` será adicionado.
 	 */
-	public insertChildBefore(child: Module, frontChild: Module): void {
+	public override insertChildBefore(child: Module, frontChild: Module): void {
 		this.willInsertChild(child)
 		super.insertChildBefore(child, frontChild)
 		this.didInsertChild(child)
@@ -226,7 +226,7 @@ abstract class Module<$Attributes extends Module.Attributes = Module.Attributes>
 	 * Remove o módulo `child` de `this`.
 	 * @param child Módulo a ser removido.
 	 */
-	public removeChild(child: Module): void {
+	public override removeChild(child: Module): void {
 		this.willRemoveChild(child)
 		super.removeChild(child)
 		this.didRemoveChild(child)

@@ -14,7 +14,7 @@ class ScriptProcessor extends Element<ScriptProcessorNode, ScriptProcessor.Attri
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof ScriptProcessor.Attributes>(name: $Name, value: ScriptProcessor.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof ScriptProcessor.Attributes>(name: $Name, value: ScriptProcessor.Attributes[$Name]): void {
 		switch (name) {
 			case 'onAudioProcess':
 				this.updateEventListener('audioprocess', value, this.attributes.onAudioProcess)

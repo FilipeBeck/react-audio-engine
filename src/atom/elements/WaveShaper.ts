@@ -14,7 +14,7 @@ class WaveShaper extends Element<WaveShaperNode, WaveShaper.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof WaveShaper.Attributes>(name: $Name, value: WaveShaper.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof WaveShaper.Attributes>(name: $Name, value: WaveShaper.Attributes[$Name]): void {
 		const node = this.node!
 
 		switch (name) {

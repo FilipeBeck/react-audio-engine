@@ -8,7 +8,7 @@ class Merger extends Branch<Merger.Attributes> {
 	/**
 	 * Merger não pode ter módulos filhos.
 	 */
-	public children!: []
+	public override children!: []
 	/**
 	 * Nomes dos módulos de saída.
 	 */
@@ -55,7 +55,7 @@ class Merger extends Branch<Merger.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof Merger.Attributes>(name: $Name, value: Merger.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof Merger.Attributes>(name: $Name, value: Merger.Attributes[$Name]): void {
 		switch (name) {
 			case 'links':
 				this.links = new Set(value)
@@ -67,20 +67,20 @@ class Merger extends Branch<Merger.Attributes> {
 	/**
 	 * Proíbe filhos.
 	 */
-	public appendChild(): never {
+	public override appendChild(): never {
 		throw new Error()
 	}
 	/**
 	 * Proíbe filhos.
 	 */
-	public insertChildBefore(): never {
+	public override insertChildBefore(): never {
 		throw new Error()
 	}
 	/**
 	 * Atualiza os módulos linkados quando houver mutações na árvore.
 	 * @param root Módulo raiz.
 	 */
-	protected async didRootThreeMutation(root: Module): Promise<void> {
+	protected override async didRootThreeMutation(root: Module): Promise<void> {
 		this.disconnect()
 		this.linkModules = root.getModulesByNames(this.links)
 		this.connect()

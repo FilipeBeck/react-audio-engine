@@ -86,7 +86,7 @@ namespace SequencerView {
 }
 
 class StepSequencer extends AudioView<StepSequencer.Props, StepSequencer.State> {
-	public state: StepSequencer.State = {
+	public override state: StepSequencer.State = {
 		isActive: false,
 		bpm: 120,
 		step: 0,
@@ -155,7 +155,7 @@ class StepSequencer extends AudioView<StepSequencer.Props, StepSequencer.State> 
 			</main>
 		</div>
 	}
-	
+
 	public changeIsPlaying(): void {
 		this.setState({ isActive: !this.state.isActive }, () => {
 			if (!this.state.isActive) {
@@ -199,7 +199,7 @@ class StepSequencer extends AudioView<StepSequencer.Props, StepSequencer.State> 
 
 	public changeSweepSlider(target: number, id: 'attack' | 'release', value: number): void {
 		const sweeps = [...this.state.sweeps]
-		const sweep = sweeps[target]
+		const sweep = sweeps[target]!
 
 		id === 'attack' ? sweep.attack = value : sweep.release = value
 		this.setState({ sweeps })
@@ -207,16 +207,16 @@ class StepSequencer extends AudioView<StepSequencer.Props, StepSequencer.State> 
 
 	public changeSweepPad(target: number, step: number, pan: -1 | 1): void {
 		const sweeps = [...this.state.sweeps]
-		const sweep = sweeps[target]
+		const sweep = sweeps[target]!
 		const pattern = sweep.pattern
 		const channel = pan === -1 ? 0 : 1
-		const currentStepState = pattern[step][channel]
+		const currentStepState = pattern[step]![channel]
 
-		pattern[step][channel] = !currentStepState
+		pattern[step]![channel] = !currentStepState
 		this.setState({ sweeps })
 	}
 
-	public componentWillUnmount(): void {
+	public override componentWillUnmount(): void {
 		window.clearInterval(this.timer)
 	}
 

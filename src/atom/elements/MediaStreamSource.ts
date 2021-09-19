@@ -6,11 +6,11 @@ class MediaStreamSource extends Element<MediaStreamAudioSourceNode, MediaStreamS
 	/**
 	 * Contexto de áudio.
 	 */
-	protected context!: AudioContext
+	protected override context!: AudioContext
 	/**
 	 * Lista com os nomes de todos os atributos que não podem ser alterados após o nó ser construido.
 	 */
-	protected get attributesConstructionKeys(): Array<keyof MediaStreamSource.Attributes> {
+	protected override get attributesConstructionKeys(): Array<keyof MediaStreamSource.Attributes> {
 		return ['media']
 	}
 	/**

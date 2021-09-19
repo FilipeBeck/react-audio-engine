@@ -15,7 +15,7 @@ class BiquadFilter extends Element<BiquadFilterNode, BiquadFilter.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof BiquadFilter.Attributes>(name: $Name, value: BiquadFilter.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof BiquadFilter.Attributes>(name: $Name, value: BiquadFilter.Attributes[$Name]): void {
 		const node = this.node!
 
 		switch (name) {

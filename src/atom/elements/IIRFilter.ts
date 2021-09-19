@@ -6,7 +6,7 @@ class IIRFilter extends Element<IIRFilterNode, IIRFilter.Attributes> {
 	/**
 	 * Lista com os nomes de todos os atributos que não podem ser alterados após o nó ser construido.
 	 */
-	protected get attributesConstructionKeys(): Array<keyof IIRFilter.Attributes> {
+	protected override get attributesConstructionKeys(): Array<keyof IIRFilter.Attributes> {
 		return ['feedBackward', 'feedForward']
 	}
 	/**

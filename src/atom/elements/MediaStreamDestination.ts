@@ -6,7 +6,7 @@ class MediaStreamDestination extends Element<MediaStreamAudioDestinationNode, Me
 	/**
 	 * Contexto de áudio.
 	 */
-	protected context!: AudioContext
+	protected override context!: AudioContext
 	/**
 	 * Constrói e retorna uma nova instância do nó.
 	 */

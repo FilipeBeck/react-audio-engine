@@ -7,7 +7,7 @@ class Delay extends Element<DelayNode, Delay.Attributes> {
 	/**
 	 * Lista com os nomes de todos os atributos que não podem ser alterados após o nó ser construido.
 	 */
-	protected get attributesConstructionKeys(): Array<keyof Delay.Attributes> {
+	protected override get attributesConstructionKeys(): Array<keyof Delay.Attributes> {
 		return ['maxTime']
 	}
 	/**
@@ -21,7 +21,7 @@ class Delay extends Element<DelayNode, Delay.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof Delay.Attributes>(name: $Name, value: Delay.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof Delay.Attributes>(name: $Name, value: Delay.Attributes[$Name]): void {
 		switch (name) {
 			case 'time':
 				this.applyParameterization('delayTime', value as Jack.Parameterization)

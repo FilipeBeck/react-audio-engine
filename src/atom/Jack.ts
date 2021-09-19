@@ -54,7 +54,7 @@ abstract class Jack<$Node, $Attributes extends Module.Attributes> extends Branch
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	public setAttribute<$Name extends keyof $Attributes>(name: $Name, value: $Attributes[$Name]): void {
+	public override setAttribute<$Name extends keyof $Attributes>(name: $Name, value: $Attributes[$Name]): void {
 		if (this.node) {
 			if (this.attributesConstructionKeys.includes(name)) {
 				this.reconstruct()

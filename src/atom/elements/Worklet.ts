@@ -8,7 +8,7 @@ class Worklet extends Element<AudioWorkletNode, Worklet.Attributes> {
 	/**
 	 * Lista com os nomes de todos os atributos que não podem ser alterados após o nó ser construido.
 	 */
-	protected get attributesConstructionKeys(): Array<keyof Worklet.Attributes> {
+	protected override get attributesConstructionKeys(): Array<keyof Worklet.Attributes> {
 		return [
 			'processorName',
 			'numberOfInputs',
@@ -29,7 +29,7 @@ class Worklet extends Element<AudioWorkletNode, Worklet.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof Worklet.Attributes>(name: $Name, value: Worklet.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof Worklet.Attributes>(name: $Name, value: Worklet.Attributes[$Name]): void {
 		switch (name) {
 			case 'parameters': {
 				for (let key in value) {
@@ -45,7 +45,7 @@ class Worklet extends Element<AudioWorkletNode, Worklet.Attributes> {
 	 * @param key Nome do atributo.
 	 * @param parameterization Parametrização a ser aplicada.
 	 */
-	protected applyParameterization(key: string, parameterization: Jack.Parameterization | undefined): void {
+	protected override applyParameterization(key: string, parameterization: Jack.Parameterization | undefined): void {
 		const parameter = this.node && this.node.parameters.get(key)
 
 		if (!parameter) {

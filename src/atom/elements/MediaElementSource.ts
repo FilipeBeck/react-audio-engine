@@ -10,7 +10,7 @@ class MediaElementSource extends Element<MediaElementAudioSourceNode, MediaEleme
 	/**
 	 * Contexto de áudio.
 	 */
-	protected context!: AudioContext
+	protected override context!: AudioContext
 	/**
 	 * Mapa de nós de áudio para o contexto de áudio corrente.
 	 */
@@ -41,7 +41,7 @@ class MediaElementSource extends Element<MediaElementAudioSourceNode, MediaEleme
 	/**
 	 * Lista com os nomes de todos os atributos que não podem ser alterados após o nó ser construido.
 	 */
-	protected get attributesConstructionKeys(): Array<keyof MediaElementSource.Attributes> {
+	protected override get attributesConstructionKeys(): Array<keyof MediaElementSource.Attributes> {
 		return ['element']
 	}
 	/**

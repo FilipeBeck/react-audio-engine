@@ -8,7 +8,7 @@ export default abstract class Branch<$Attributes extends Module.Attributes = Mod
 	 * Recupera os primeiros nós não vazios depois de child. Se vazio, retorna as saídas de child se forem nós de destino, ou o destino de `BaseAudioContext.destination`, caso contrário.
 	 * @param child Módulo filho.
 	 */
-	protected getFluentFrontNodesToChild(child: Module): Set<AudioNode> {
+	protected override getFluentFrontNodesToChild(child: Module): Set<AudioNode> {
 		const nodes = super.getFluentFrontNodesToChild(child)
 
 		if (nodes.size) {

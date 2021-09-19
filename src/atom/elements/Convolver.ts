@@ -14,7 +14,7 @@ class Convolver extends Element<ConvolverNode, Convolver.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof Convolver.Attributes>(name: $Name, value: Convolver.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof Convolver.Attributes>(name: $Name, value: Convolver.Attributes[$Name]): void {
 		const node = this.node!
 
 		switch (name) {

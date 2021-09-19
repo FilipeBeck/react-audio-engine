@@ -14,7 +14,7 @@ class Analyser extends Element<AnalyserNode, Analyser.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof Analyser.Attributes>(name: $Name, value: Analyser.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof Analyser.Attributes>(name: $Name, value: Analyser.Attributes[$Name]): void {
 		const node = this.node!
 
 		switch (name) {

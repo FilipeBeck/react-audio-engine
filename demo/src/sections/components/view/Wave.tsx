@@ -91,7 +91,7 @@ const Wave: React.FC<Wave.Props> = props => {
 			for (let i = 0, count = buffer.data.length; i < count; i++) {
 				const x = i * 2
 				data[x + 0] = i
-				data[x + 1] = buffer.data[i]
+				data[x + 1] = buffer.data[i]!
 			}
 
 			gl.bindBuffer(gl.ARRAY_BUFFER, waveBuffer)

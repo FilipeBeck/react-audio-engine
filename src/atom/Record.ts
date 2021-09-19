@@ -11,7 +11,7 @@ class Record extends Scenario<Record.Attributes> {
 	/**
 	 * Contexto de áudio.
 	 */
-	public readonly context!: OfflineAudioContext
+	public override readonly context!: OfflineAudioContext
 	/**
 	 * Lista com os nomes de todos os atributos que não podem ser alterados após o nó ser construido.
 	 */
@@ -31,7 +31,7 @@ class Record extends Scenario<Record.Attributes> {
 	 * @param name Nome do atributo.
 	 * @param value Valor do atributo.
 	 */
-	protected applyAttribute<$Name extends keyof Record.Attributes>(name: $Name, value: Record.Attributes[$Name]): void {
+	protected override applyAttribute<$Name extends keyof Record.Attributes>(name: $Name, value: Record.Attributes[$Name]): void {
 		switch (name) {
 			case 'suspension':
 				if (value) {
@@ -96,7 +96,7 @@ class Record extends Scenario<Record.Attributes> {
 	/**
 	 * Cria um novo nó e atualiza seus atributos.
 	 */
-	protected refreshNode(): void {
+	protected override refreshNode(): void {
 		const attributes = this.attributes
 		const sampleRate = attributes.sampleRate || 44100
 		const length = (attributes.length || 1) * sampleRate

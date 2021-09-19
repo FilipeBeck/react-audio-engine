@@ -14,7 +14,7 @@ require('./AudioAnalyzer.scss')
 const audioURL = require('./assets/viper.mp3').default as string
 
 class AudioAnalyser extends AudioView<AudioAnalyser.Props, AudioAnalyser.State> {
-	public state: AudioAnalyser.State = {
+	public override state: AudioAnalyser.State = {
 		timeDomainData: new Uint8Array(),
 		analyzer: null,
 		isLoading: false,
@@ -76,7 +76,7 @@ class AudioAnalyser extends AudioView<AudioAnalyser.Props, AudioAnalyser.State> 
 				</div>
 				<form action="" onSubmit={event => {
 					event.preventDefault()
-					
+
 					const inputs = (event.target as HTMLFormElement).elements
 					const scene = { ...this.state.scene } as Record<string, number>
 
@@ -125,7 +125,7 @@ class AudioAnalyser extends AudioView<AudioAnalyser.Props, AudioAnalyser.State> 
 				return
 			}
 
-			const file = files[0]
+			const file = files[0]!
 
 			this.setState({ isLoading: true })
 
@@ -170,7 +170,7 @@ class AudioAnalyser extends AudioView<AudioAnalyser.Props, AudioAnalyser.State> 
 		this.setState({ scene: { ...this.state.scene, active: false } })
 	}
 
-	public componentDidUpdate(): void {
+	public override componentDidUpdate(): void {
 		super.componentDidUpdate()
 		const context = (ReactDOM.findDOMNode(this) as HTMLDivElement | null)?.querySelector('canvas')?.getContext('2d')
 
@@ -181,11 +181,11 @@ class AudioAnalyser extends AudioView<AudioAnalyser.Props, AudioAnalyser.State> 
 				const amplitudeArray = this.state.timeDomainData
 
 				context.clearRect(0, 0, canvasWidth, canvasHeight);
-				context.moveTo(0, amplitudeArray[0] / 256)
+				context.moveTo(0, amplitudeArray[0]! / 256)
 				context.strokeStyle = '#fafffa'
 				context.beginPath()
 				for (let i = 0; i < amplitudeArray.length; i++) {
-					let value = amplitudeArray[i] / 256;
+					let value = amplitudeArray[i]! / 256;
 					let y = canvasHeight - (canvasHeight * value) - 1;
 					context.lineTo(i, y)
 				}
