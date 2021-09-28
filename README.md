@@ -39,11 +39,11 @@ ReactATOM.render(<Scene {...props} />, stage);
 Responsável pela criação e gerenciamento dos contextos de áudio. Todos os demais módulos devem estar contidos em uma cena.
 
 ```tsx
-import { ATOM, Scene, Track, Gain, BufferSource } from 'react-audio-engine'
+import { Scene, Track, Gain, BufferSource } from 'react-audio-engine'
 
 function MyScene(props: { masterGain: number, buffer: ArrayBuffer }) {
   return (
-    <Scene sampleRate={88200} latencyHint={ATOM.Scene.LatencyCategory.PLAYBACK}>
+    <Scene sampleRate={88200} latencyHint={Scene.LatencyCategory.PLAYBACK}>
       <Track>
         <BufferSource buffer={props.buffer}>
         <Gain level={props.masterGain}/>
@@ -127,7 +127,7 @@ Componente utilizado para facilitar a renderização de elementos de GUI e WebAu
 - `renderAudio`: utilizado para renderizar os elementos de áudio.
 - `renderView`: utilizado para renderizar os elementos de GUI.
 
-Se fornecido um `stage` via contexto, o componente usará o mesmo para renderizar o áudio. Senão, um `state` será criado.
+Se fornecido um `stage` via contexto, o componente usará o mesmo para renderizar o áudio. Senão, um `stage` será criado.
 
 ```tsx
 import React from 'react'

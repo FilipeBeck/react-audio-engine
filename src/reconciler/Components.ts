@@ -26,6 +26,7 @@ export namespace Mixer {
 		ref?: React.Ref<ATOM.Mixer>
 	}
 }
+Mixer.displayName = 'Mixer'
 /**
  * Representa um `ATOM.Track`.
  */
@@ -43,6 +44,7 @@ export namespace Track {
 		ref?: React.Ref<ATOM.Track>
 	}
 }
+Track.displayName = 'Track'
 /**
  * Representa um `ATOM.Bypass`.
  */
@@ -60,6 +62,7 @@ export namespace Bypass {
 		ref?: React.Ref<ATOM.Bypass>
 	}
 }
+Bypass.displayName = 'Bypass'
 /**
  * Representa um `ATOM.Merger`.
  */
@@ -77,12 +80,19 @@ export namespace Merger {
 		ref?: React.Ref<ATOM.Merger>
 	}
 }
+Merger.displayName = 'Merger'
 /**
  * Representa um `ATOM.Scene`.
  */
-export const Scene: React.FC<Scene.Props> = React.forwardRef((props, ref) => {
+export const Scene: Scene = React.forwardRef((props, ref) => {
 	return React.createElement(Tag.SCENE, { ...props, ref }, props.children)
-})
+}) as any
+export interface Scene extends React.FC<Scene.Props> {
+	/**
+	 * Representa uma categoria de latência.
+	 */
+	LatencyCategory: typeof ATOM.Scene.LatencyCategory;
+}
 export namespace Scene {
 	/**
 	 * Atributos de `Scene`.
@@ -94,6 +104,7 @@ export namespace Scene {
 		ref?: React.Ref<ATOM.Scene>
 	}
 }
+Scene.displayName = 'Scene'
 /**
  * Representa um `ATOM.Record`.
  */
@@ -111,6 +122,7 @@ export namespace Record {
 		ref?: React.Ref<ATOM.Record>
 	}
 }
+Record.displayName = 'Record'
 /**
  * Representa um `ATOM.Analyser`.
  */
@@ -150,9 +162,15 @@ BufferSource.displayName = 'BufferSource'
 /**
  * Representa um `ATOM.BiquadFilter`.
  */
-export const BiquadFilter: React.FC<BiquadFilter.Props> = React.forwardRef((props, ref) => {
+export const BiquadFilter: BiquadFilter = React.forwardRef((props, ref) => {
 	return React.createElement(Tag.BIQUAD_FILTER, { ...props, ref }, props.children)
-})
+}) as any
+export interface BiquadFilter extends React.FC<BiquadFilter.Props> {
+	/**
+	 * Define o tipo de algoritmo de filtragem que `BiquadFilter` está implementando, afetando o significado de seus atributos (exceto detune, que tem o mesmo significado para todos).
+	 */
+	Type: typeof ATOM.BiquadFilter.Type;
+}
 export namespace BiquadFilter {
 	/**
 	 * Atributos de `BiquadFilter`.
@@ -331,9 +349,15 @@ MediaStreamSource.displayName = 'MediaStreamSource'
 /**
  * Representa um `ATOM.Oscillator`.
  */
-export const Oscillator: React.FC<Oscillator.Props> = React.forwardRef((props, ref) => {
+export const Oscillator: Oscillator = React.forwardRef((props, ref) => {
 	return React.createElement(Tag.OSCILLATOR, { ...props, ref }, props.children)
-})
+}) as any
+export interface Oscillator extends React.FC<Oscillator.Props> {
+	/**
+	 * Tipo de onda.
+	 */
+	Type: typeof ATOM.Oscillator.Type;
+}
 export namespace Oscillator {
 	/**
 	 * Atributos de `Oscillator`.
@@ -342,16 +366,30 @@ export namespace Oscillator {
 		/**
 		 * Referência ao elemento host.
 		 */
-		ref?: React.Ref<ATOM.Oscillator>
+		ref?: React.Ref<ATOM.Oscillator>;
 	}
+	/**
+	 * Propriedades de uma onda periódica.
+	 */
+	export type PeriodicWave = ATOM.Oscillator.PeriodicWave;
 }
 Oscillator.displayName = 'Oscillator'
 /**
  * Representa um `ATOM.Panner`.
  */
-export const Panner: React.FC<Panner.Props> = React.forwardRef((props, ref) => {
+export const Panner: Panner = React.forwardRef((props, ref) => {
 	return React.createElement(Tag.PANNER, { ...props, ref }, props.children)
-})
+}) as any
+export interface Panner extends React.FC<Panner.Props> {
+	/**
+	 * Algoritmo usado na redução de volume de acordo com a distância de `listener`.
+	 */
+	DistanceModel: typeof ATOM.Panner.DistanceModel
+	/**
+	 * Algoritmo de espacialização usado para posicionar o áudio no espaço 3D.
+	 */
+	PanningModel: typeof ATOM.Panner.PanningModel
+}
 export namespace Panner {
 	/**
 	 * Atributos de `Panner`.
@@ -367,9 +405,15 @@ Panner.displayName = 'Panner'
 /**
  * Representa um `ATOM.WaveShaper`.
  */
-export const WaveShaper: React.FC<WaveShaper.Props> = React.forwardRef((props, ref) => {
+export const WaveShaper: WaveShaper = React.forwardRef((props, ref) => {
 	return React.createElement(Tag.WAVE_SHAPER, { ...props, ref }, props.children)
-})
+}) as any
+export interface WaveShaper extends React.FC<WaveShaper.Props> {
+	/**
+	 * Técnica de {@link https://en.wikipedia.org/wiki/Oversampling oversampling} aplicada à curva. Oversampling é uma técnica onde se cria mais amostras antes de aplicar o efeito de distorção ao sinal. Uma vez aplicada, o número de amostras é reduzido ao valor inicial. Isso leva a resultados melhores devido à redução de {@link https://en.wikipedia.org/wiki/Aliasing cerrilhamento}, mas às custas de uma curva de modelagem com precisão mais baixa.
+	 */
+	Oversample: ATOM.WaveShaper.Oversample
+}
 export namespace WaveShaper {
 	/**
 	 * Atributos de `WaveShaper`.
