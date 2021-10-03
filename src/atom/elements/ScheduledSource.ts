@@ -32,7 +32,7 @@ abstract class ScheduledSource<$Node extends AudioScheduledSourceNode, $Attribut
 
 		if (typeofScheduling === 'function') {
 			scheduling = (scheduling as ScheduledSource.Scheduling.Functional)(this.context!)
-			typeofScheduling === typeof scheduling
+			typeofScheduling = typeof scheduling
 		}
 
 		switch (typeofScheduling) {

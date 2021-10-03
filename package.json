@@ -1,6 +1,6 @@
 {
 	"name": "react-audio-engine",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "Engine to assemble Web Audio graphs using React",
 	"main": "index.js",
 	"author": "Filipe Roberto Beck",
