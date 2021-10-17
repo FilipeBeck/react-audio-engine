@@ -2,7 +2,7 @@ import Jack from './Jack'
 import Module from './Module'
 import Element from './elements/Element'
 import Stage from './Stage'
-import { didSet } from '../toolkit/Decoration'
+import { didSet } from 'will-did-set-decorator'
 /**
  * Representa um grapho de áudio, online ou offline. É responsável por criar as instâncias de `BaseAudioContext`. Todo módulo precisa ser filho direto ou indireto de `Scenario`.
  */

@@ -1,6 +1,6 @@
 import Scenario from './Scenario'
 import Event from '../toolkit/Event'
-import { willSet } from '../toolkit/Decoration'
+import { willSet } from 'will-did-set-decorator'
 /**
  * Módulo que representa um cenário online (que usa `AudioContext`) com contexto de áudio único que será instanciado e propagado para os módulos filhos.
  */

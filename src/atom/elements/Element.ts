@@ -1,6 +1,6 @@
 import Jack from '../Jack'
 import Module from '../Module'
-import { didSet, willSet } from '../../toolkit/Decoration'
+import { didSet, willSet } from 'will-did-set-decorator'
 import QueuedBatchRunner from '../../toolkit/QueuedBatchRunner'
 /**
  * Módulo que tem uma única instância de `AudioNode` como entrada e saída. Seus módulos filhos são conectados em série a partir dessa instância, terminando em `BaseAudioContext.destination` se não fornecido explicitamente.

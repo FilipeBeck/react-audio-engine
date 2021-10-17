@@ -1,6 +1,6 @@
 {
 	"name": "react-audio-engine",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "Engine to assemble Web Audio graphs using React",
 	"main": "index.js",
 	"author": "Filipe Roberto Beck",
@@ -22,7 +22,8 @@
 		"tslib": "^2.0.0"
 	},
 	"dependencies": {
-		"react-reconciler": "^0.25.1"
+		"react-reconciler": "^0.25.1",
+		"will-did-set-decorator": "^0.0.4"
 	},
 	"devDependencies": {
 		"@material-ui/core": "^4.12.3",

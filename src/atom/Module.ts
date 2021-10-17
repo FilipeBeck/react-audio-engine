@@ -1,5 +1,5 @@
 import Container from './Container'
-import { didSet } from '../toolkit/Decoration'
+import { didSet } from 'will-did-set-decorator'
 import QueuedBatchRunner from '../toolkit/QueuedBatchRunner'
 /**
  * Classe base para os demais componentes de áudio. Um módulo de áudio é análogo à uma rede neural (com instâncias de `AudioNode` no lugar de neurônios) do ponto de vista de sua estrutura e a forma como as conexões são feitas com outros módulos. Ele possui um conjunto de instâncias de `AudioNode` como entrada, um conjunto de instâncias de `AudioNode` como saída e um conjunto de instâncias de `AudioNode` intermediários. As conexões são feitas recuperando todas as saídas de um módulo e conectando cada uma delas com todas as entradas de um módulo frontal. Caso um módulo não contenha entradas, será recuperada as entradas do módulo mais próximo de forma recursiva, e a forma como as entradas são recuperadas depende do módulo pai. O mesmo ocorre para um módulo que não contiver saídas, sendo recuperada as saídas do módulo mais próximo de forma recursiva. A única classe que define instâncias de `AudioNode` próprias como entradas e saídas é `Element`, possuindo um único `AudioNode` que serve tanto como entrada quanto saída. As demais classes apenas manipulam as entradas, saídas e conexões.

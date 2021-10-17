@@ -1,6 +1,6 @@
 import Module from './Module'
 import Branch from './Branch'
-import { didSet } from '../toolkit/Decoration'
+import { didSet } from 'will-did-set-decorator'
 /**
  * Módulo que conecta seu antecessor com uma lista de módulos nomeados.
  */
